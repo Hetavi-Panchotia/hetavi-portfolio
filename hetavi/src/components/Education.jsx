@@ -21,7 +21,7 @@ const education = [
 
 const Education = () => {
   return (
-    <section id="experience" className="py-24 relative">
+    <section id="education" className="py-24 relative">
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         
         <motion.div

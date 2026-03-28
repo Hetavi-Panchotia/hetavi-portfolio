@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
+import { SiX, SiYoutube, SiLeetcode } from "react-icons/si";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Hero = () => {
   return (
@@ -65,6 +67,29 @@ const Hero = () => {
               className="px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-semibold flex items-center gap-2 hover:bg-white/10 transition-colors"
             >
               Get in Touch
+            </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+            className="flex items-center gap-6 mt-4"
+          >
+            <a href="https://github.com/Hetavi-Panchotia" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-neon-blue hover:-translate-y-1 transition-all duration-300">
+              <FaGithub size={24} />
+            </a>
+            <a href="https://www.linkedin.com/in/hetavi-panchotia-7a8648395/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-neon-blue hover:-translate-y-1 transition-all duration-300">
+              <FaLinkedin size={24} />
+            </a>
+            <a href="https://x.com/HPanchotia21633" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-neon-blue hover:-translate-y-1 transition-all duration-300">
+              <SiX size={24} />
+            </a>
+            <a href="https://www.youtube.com/@HetaviPanchotia-2007" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-neon-blue hover:-translate-y-1 transition-all duration-300">
+              <SiYoutube size={26} />
+            </a>
+            <a href="https://leetcode.com/u/in_the_bluess/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-neon-blue hover:-translate-y-1 transition-all duration-300">
+              <SiLeetcode size={24} />
             </a>
           </motion.div>
         </div>

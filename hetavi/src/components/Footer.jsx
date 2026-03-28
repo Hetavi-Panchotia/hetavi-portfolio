@@ -14,12 +14,6 @@ const Footer = () => {
           Made with <Heart className="text-neon-purple animate-pulse" size={16} fill="currentColor" /> by Hetavi
         </div>
 
-        <div className="flex gap-6 text-sm">
-          <a href="https://x.com/HPanchotia21633" className="text-white/50 hover:text-neon-blue transition-colors">Twitter</a>
-          <a href="https://www.youtube.com/@HetaviPanchotia-2007" className="text-white/50 hover:text-neon-blue transition-colors">YouTube</a>
-          <a href="https://leetcode.com/u/in_the_bluess/" className="text-white/50 hover:text-neon-blue transition-colors">LeetCode</a>
-        </div>
-
       </div>
     </footer>
   );

@@ -42,6 +42,14 @@ const projects = [
     image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069&auto=format&fit=crop",
     live: "https://hetavi-liciousclone.netlify.app/",
     github: "https://github.com/Hetavi-Panchotia/Licious_Clone"
+  },
+  {
+    title: "Life of a Developer",
+    description : "“Life of a Developer” is an interactive storytelling web experience that humorously captures the journey of becoming a software developer.",
+    tech: ["React", "Tailwind CSS"],
+    image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774600501/Screenshot_2026-03-27_135126_ysiqdt.png",
+    live: "https://life-of-a-developer-hetavi.netlify.app/",
+    github: "https://github.com/Hetavi-Panchotia/Life-of-a-Developer"
   }
 ];
 

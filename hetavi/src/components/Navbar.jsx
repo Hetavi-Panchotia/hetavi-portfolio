@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import { Menu, X, Mail } from 'lucide-react';
 import { cn } from '../utils/cn';
 
 const Navbar = () => {
@@ -48,7 +48,7 @@ const Navbar = () => {
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Certificates', href: '#certificates' },
-    { name: 'Experience', href: '#experience' },
+    { name: 'Education', href: '#education' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -92,12 +92,6 @@ const Navbar = () => {
 
         {/* Action Buttons */}
         <div className="hidden md:flex items-center gap-4">
-          <a href="https://github.com/Hetavi-Panchotia" target="_blank" rel="noreferrer" className="text-white/70 hover:text-neon-blue transition-colors">
-            <Github size={20} />
-          </a>
-          <a href="https://www.linkedin.com/in/hetavi-panchotia-7a8648395/" target="_blank" rel="noreferrer" className="text-white/70 hover:text-neon-purple transition-colors">
-            <Linkedin size={20} />
-          </a>
           <a 
             href="#contact"
             className="px-5 py-2 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 hover:border-neon-blue/50 transition-all text-sm font-medium text-white"
