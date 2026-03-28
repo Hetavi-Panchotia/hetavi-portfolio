@@ -138,6 +138,8 @@ const Certificates = () => {
               
               <a 
                 href={cert.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-white mt-2 group/link"
               >
                 View Credential <ExternalLink size={14} className="group-hover/link:-translate-y-1 group-hover/link:translate-x-1 transition-transform" />

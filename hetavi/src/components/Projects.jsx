@@ -117,12 +117,16 @@ const ProjectCard = ({ project, index }) => {
         <div className="flex gap-4">
           <a 
             href={project.live}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-white text-dark-bg font-semibold hover:bg-neon-blue hover:text-dark-bg transition-all transform hover:-translate-y-1"
           >
             <ExternalLink size={16} /> Live Demo
           </a>
           <a 
             href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-4 py-3 rounded-xl bg-white/10 text-white hover:bg-white/20 transition-all border border-white/10 flex items-center justify-center transform hover:-translate-y-1"
           >
             <Github size={20} />
