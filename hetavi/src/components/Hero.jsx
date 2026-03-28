@@ -228,30 +228,31 @@ const Hero = () => {
             Crafting beautiful, interactive, and high-performance applications with modern technologies. Let's build something amazing together.
           </motion.p>
 
-          <motion.div
-            variants={letterVariants}
-            className="flex flex-wrap items-center gap-4 mt-6 z-20"
-          >
-            <MagneticButton 
-              href="#projects"
-              primary={true}
-              className="px-8 py-4 rounded-full bg-white text-dark-bg font-semibold transition-colors hover:bg-neon-blue hover:text-white"
+          <div className="flex flex-col gap-6 w-full sm:w-fit mt-8 z-20">
+            <motion.div
+              variants={letterVariants}
+              className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-fit"
             >
-              View Projects <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </MagneticButton>
-            
-            <MagneticButton 
-              href="#contact"
-              className="px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 hover:border-neon-purple/50 transition-colors"
-            >
-              Get in Touch
-            </MagneticButton>
-          </motion.div>
+              <MagneticButton 
+                href="#projects"
+                primary={true}
+                className="px-8 py-4 rounded-full bg-white text-dark-bg font-semibold transition-colors hover:bg-neon-blue hover:text-white justify-center w-full sm:w-auto"
+              >
+                View Projects <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </MagneticButton>
+              
+              <MagneticButton 
+                href="#contact"
+                className="px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 hover:border-neon-purple/50 transition-colors justify-center w-full sm:w-auto"
+              >
+                Get in Touch
+              </MagneticButton>
+            </motion.div>
 
-          <motion.div
-            variants={letterVariants}
-            className="flex items-center gap-6 mt-6 ml-2"
-          >
+            <motion.div
+              variants={letterVariants}
+              className="flex items-center justify-between w-full px-3"
+            >
             {[
               { icon: FaGithub, href: "https://github.com/Hetavi-Panchotia", color: "hover:text-white" },
               { icon: FaLinkedin, href: "https://www.linkedin.com/in/hetavi-panchotia-7a8648395/", color: "hover:text-[#0A66C2]" },
@@ -272,7 +273,8 @@ const Hero = () => {
                 <span className="absolute -inset-2 bg-white/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300" />
               </motion.a>
             ))}
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
 
         {/* Right Visuals */}
