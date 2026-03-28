@@ -64,7 +64,7 @@ const Certificates = () => {
     
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % certificates.length);
-    }, 1500); // Rotates every 1.5 seconds
+    }, 3000); // Rotates every 1.5 seconds
     
     return () => clearInterval(interval);
   }, [isHovered, selectedCert]);
