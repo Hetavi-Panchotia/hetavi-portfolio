@@ -41,17 +41,17 @@ const About = () => {
   const cards = [
     {
       icon: <FolderGit2 className="text-neon-blue" size={24} />,
-      title: "10+",
+      title: "5+",
       desc: "Projects"
     },
     {
       icon: <Trophy className="text-neon-purple" size={24} />,
-      title: "5+",
+      title: "2+",
       desc: "Hackathons"
     },
     {
       icon: <Briefcase className="text-neon-blue" size={24} />,
-      title: "1 yr",
+      title: "6 months",
       desc: "Experience"
     }
   ];
