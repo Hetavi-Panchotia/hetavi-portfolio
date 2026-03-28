@@ -1,110 +1,251 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, MapPin, Send, CheckCircle2, Github, Linkedin, Twitter } from 'lucide-react';
+
+const ContactInput = ({ label, type = "text", placeholder, name, isTextArea = false }) => {
+  const [isFocused, setIsFocused] = useState(false);
+  const [hasValue, setHasValue] = useState(false);
+
+  const handleBlur = (e) => {
+    setIsFocused(false);
+    setHasValue(e.target.value.length > 0);
+  };
+
+  const inputClasses = `w-full bg-black/40 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none transition-all duration-300 ${
+    isFocused ? 'border-neon-blue ring-1 ring-neon-blue/50' : 'hover:border-white/20'
+  }`;
+
+  return (
+    <div className="relative group">
+      <motion.label
+        initial={false}
+        animate={{
+          y: isFocused || hasValue ? -32 : 0,
+          x: isFocused || hasValue ? -4 : 0,
+          scale: isFocused || hasValue ? 0.85 : 1,
+          color: isFocused ? 'rgba(0, 240, 255, 1)' : 'rgba(255, 255, 255, 0.5)'
+        }}
+        className="absolute left-5 top-4 pointer-events-none font-medium z-10 origin-left"
+      >
+        {label}
+      </motion.label>
+      
+      {isTextArea ? (
+        <textarea
+          rows="4"
+          onFocus={() => setIsFocused(true)}
+          onBlur={handleBlur}
+          onChange={(e) => setHasValue(e.target.value.length > 0)}
+          className={`${inputClasses} resize-none`}
+        />
+      ) : (
+        <input
+          type={type}
+          onFocus={() => setIsFocused(true)}
+          onBlur={handleBlur}
+          onChange={(e) => setHasValue(e.target.value.length > 0)}
+          className={inputClasses}
+        />
+      )}
+      
+      {/* Background glow on focus */}
+      <AnimatePresence>
+        {isFocused && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 bg-neon-blue/5 blur-xl -z-10 rounded-2xl"
+          />
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 const Contact = () => {
+  const [formState, setFormState] = useState('idle'); // idle, sending, success
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormState('sending');
+    // Simulate API call
+    setTimeout(() => {
+      setFormState('success');
+      setTimeout(() => setFormState('idle'), 5000);
+    }, 2000);
+  };
+
+  const socialLinks = [
+    { icon: <Github size={20} />, link: "https://github.com/Hetavi-Panchotia", color: "hover:text-white" },
+    { icon: <Linkedin size={20} />, link: "https://www.linkedin.com/in/hetavi-panchotia/", color: "hover:text-neon-blue" },
+    { icon: <Twitter size={20} />, link: "https://twitter.com/hetavipanchotia", color: "hover:text-neon-purple" }
+  ];
+
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+    <section id="contact" className="py-32 relative overflow-hidden bg-dark-bg min-h-screen flex items-center">
+      
+      {/* Background Ambience */}
+      <div className="absolute inset-0 pointer-events-none opacity-20">
+        <motion.div 
+          animate={{ backgroundPosition: ['100% 0%', '0% 100%'] }}
+          transition={{ duration: 40, repeat: Infinity, repeatType: 'reverse' }}
+          className="w-full h-full"
+          style={{
+            backgroundImage: 'radial-gradient(ellipse at center, rgba(0,240,255,0.2) 0%, transparent 60%)',
+            backgroundSize: '150% 150%'
+          }}
+        />
+      </div>
+
+      {/* Divider */}
+      <div className="absolute top-10 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           
-          {/* Info */}
+          {/* Left Side: Info & CTA */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gradient">
-              Let's build something <br/>exceptional.
+             <h2 className="text-4xl md:text-6xl lg:text-7xl font-heading font-black mb-8 uppercase tracking-tight leading-none text-shadow-glow">
+              <span className="text-white">Let's </span>
+              <span className="text-neon-blue drop-shadow-[0_0_15px_rgba(0,240,255,0.5)] block">Collaborate</span>
             </h2>
-            <p className="text-lg text-white/80 mb-12 max-w-md leading-relaxed">
-              I'm always open to discussing product design work, new frontend and backend architectures, or partnership opportunities.
+            
+            <p className="text-lg md:text-xl text-white/60 mb-12 max-w-lg leading-relaxed font-light">
+              Always open to discussing game-changing ideas, innovative designs, or full-stack possibilities.
             </p>
 
-            <div className="flex flex-col gap-6">
-              <div className="flex items-center gap-4 group">
-                <div className="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-neon-blue group-hover:bg-neon-blue group-hover:text-dark-bg transition-all">
-                  <Mail size={24} />
+            <div className="space-y-8 mb-12">
+              <motion.div whileHover={{ x: 10 }} className="flex items-center gap-5 group">
+                <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-neon-blue group-hover:scale-110 transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.3)] group-hover:shadow-[0_0_30px_rgba(0,240,255,0.2)]">
+                  <Mail size={28} />
                 </div>
                 <div>
-                  <p className="text-sm text-white/60 mb-1">Email</p>
-                  <p className="text-lg font-medium text-white/90">hetavipanchotia@gmail.com</p>
+                  <p className="text-xs font-mono uppercase tracking-widest text-white/40 mb-1">Direct Email</p>
+                  <p className="text-xl font-bold text-white group-hover:text-neon-blue transition-colors">hetavipanchotia@gmail.com</p>
                 </div>
-              </div>
+              </motion.div>
               
-              <div className="flex items-center gap-4 group">
-                <div className="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-neon-purple group-hover:bg-neon-purple group-hover:text-dark-bg transition-all">
-                  <MapPin size={24} />
+              <motion.div whileHover={{ x: 10 }} className="flex items-center gap-5 group">
+                <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-neon-purple group-hover:scale-110 transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.3)] group-hover:shadow-[0_0_30px_rgba(138,43,226,0.2)]">
+                  <MapPin size={28} />
                 </div>
                 <div>
-                  <p className="text-sm text-white/60 mb-1">Location</p>
-                  <p className="text-lg font-medium text-white/90">Kalol, Gujarat (Open to Remote)</p>
+                  <p className="text-xs font-mono uppercase tracking-widest text-white/40 mb-1">Base Location</p>
+                  <p className="text-xl font-bold text-white group-hover:text-neon-purple transition-colors">Ahmedabad, India</p>
                 </div>
-              </div>
+              </motion.div>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex gap-4">
+              {socialLinks.map((social, i) => (
+                <motion.a
+                  key={i}
+                  href={social.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -5, scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className={`w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/60 transition-all duration-300 ${social.color} hover:bg-white/10 hover:border-white/20`}
+                >
+                  {social.icon}
+                </motion.a>
+              ))}
             </div>
           </motion.div>
 
-          {/* Form */}
+          {/* Right Side: Interactive Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="glass p-8 md:p-10 rounded-3xl border border-white/10 relative"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative"
           >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-neon-purple filter blur-[80px] opacity-20" />
+            {/* Background blur decorative element */}
+            <div className="absolute -top-20 -right-20 w-64 h-64 bg-neon-blue filter blur-[100px] opacity-10 animate-pulse" />
             
-            <form className="flex flex-col gap-6 relative z-10" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="flex flex-col gap-2">
-                  <label className="text-sm font-medium text-white/70 ml-1">Your Name</label>
-                  <input 
-                    type="text" 
-                    placeholder="John Doe"
-                    className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-neon-blue focus:ring-1 focus:ring-neon-blue transition-all"
-                  />
+            <div className="glass p-8 md:p-12 rounded-[2.5rem] border border-white/10 relative overflow-hidden backdrop-blur-2xl shadow-[0_40px_80px_rgba(0,0,0,0.5)]">
+               <form className="space-y-8 relative z-10" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <ContactInput label="Full Name" name="name" />
+                  <ContactInput label="Email Address" type="email" name="email" />
                 </div>
-                <div className="flex flex-col gap-2">
-                  <label className="text-sm font-medium text-white/70 ml-1">Your Email</label>
-                  <input 
-                    type="email" 
-                    placeholder="john@example.com"
-                    className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-neon-blue focus:ring-1 focus:ring-neon-blue transition-all"
-                  />
-                </div>
-              </div>
-              
-              <div className="flex flex-col gap-2">
-                <label className="text-sm font-medium text-white/70 ml-1">Subject</label>
-                <input 
-                  type="text" 
-                  placeholder="Project Inquiry"
-                  className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple transition-all"
-                />
-              </div>
+                
+                <ContactInput label="Subject" name="subject" />
+                <ContactInput label="Share your thoughts" name="message" isTextArea={true} />
 
-              <div className="flex flex-col gap-2">
-                <label className="text-sm font-medium text-white/70 ml-1">Message</label>
-                <textarea 
-                  rows="5"
-                  placeholder="Tell me about your project..."
-                  className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple transition-all resize-none"
-                ></textarea>
-              </div>
-
-              <button 
-                type="submit"
-                className="w-full py-4 bg-white text-dark-bg font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-neon-blue hover:text-dark-bg transition-all transform hover:-translate-y-1 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] mt-2"
-              >
-                Send Message <Send size={18} />
-              </button>
-            </form>
+                <motion.button 
+                  type="submit"
+                  disabled={formState !== 'idle'}
+                  whileHover={formState === 'idle' ? { scale: 1.02, y: -2 } : {}}
+                  whileTap={formState === 'idle' ? { scale: 0.98 } : {}}
+                  className={`w-full py-5 px-8 rounded-2xl font-black uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-500 overflow-hidden relative group ${
+                    formState === 'success' 
+                    ? 'bg-green-500/20 text-green-400 border border-green-500/50' 
+                    : 'bg-white text-dark-bg hover:bg-neon-blue hover:text-dark-bg'
+                  }`}
+                >
+                  <AnimatePresence mode="wait">
+                    {formState === 'idle' && (
+                      <motion.div 
+                        key="idle"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="flex items-center gap-2"
+                      >
+                        Send Transmission <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      </motion.div>
+                    )}
+                    {formState === 'sending' && (
+                      <motion.div 
+                        key="sending"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="flex items-center gap-2"
+                      >
+                        <motion.div
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                        >
+                          <Send size={20} />
+                        </motion.div>
+                        Encrypting...
+                      </motion.div>
+                    )}
+                    {formState === 'success' && (
+                      <motion.div 
+                        key="success"
+                        initial={{ scale: 0.5, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        className="flex items-center gap-2"
+                      >
+                        Sent Successfully <CheckCircle2 size={20} />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.button>
+              </form>
+            </div>
           </motion.div>
-
         </div>
       </div>
+
+      {/* Footer Text */}
+      <div className="absolute bottom-10 left-0 w-full text-center">
+        <p className="text-white/20 text-[10px] uppercase tracking-[0.3em] font-mono">
+          © {new Date().getFullYear()} All Systems Operational / Designed by Hetavi
+        </p>
+      </div>
+
     </section>
   );
 };
