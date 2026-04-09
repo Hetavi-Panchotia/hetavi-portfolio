@@ -3,6 +3,7 @@ import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from
 import { ArrowRight, Download, ChevronDown } from 'lucide-react';
 import { SiX, SiYoutube, SiLeetcode } from "react-icons/si";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 // --- Magnetic Button Component ---
 const MagneticButton = ({ children, className, href, onClick, primary }) => {
@@ -23,7 +24,9 @@ const MagneticButton = ({ children, className, href, onClick, primary }) => {
 
   const { x, y } = position;
 
-  const Tag = href ? 'a' : 'button';
+  // Determine which tag to use: 'button', 'a' (external), or Link (internal)
+  const isInternal = href && (href.startsWith('/') || href.startsWith('#'));
+  const cleanHref = isInternal && href.startsWith('#') ? `/${href.slice(1)}` : href;
 
   return (
     <motion.div
@@ -34,25 +37,56 @@ const MagneticButton = ({ children, className, href, onClick, primary }) => {
       transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
       className="relative z-10"
     >
-      <Tag
-        href={href}
-        onClick={onClick}
-        className={`relative overflow-hidden group flex items-center gap-2 ${className}`}
-      >
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="flex w-full h-full items-center justify-center relative flex-1"
+      {isInternal ? (
+        <Link
+          to={cleanHref === '/hero' ? '/' : cleanHref}
+          onClick={onClick}
+          className={`relative overflow-hidden group flex items-center gap-2 ${className}`}
         >
-            {/* Glow/Pulse effect background for primary button */}
-            {primary && (
-            <span className="absolute -inset-2 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-blue opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-md rounded-full pointer-events-none" />
-            )}
-            {/* Button Content */}
-            <span className="relative z-10 flex items-center gap-2">{children}</span>
-        </motion.div>
-      </Tag>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex w-full h-full items-center justify-center relative flex-1"
+          >
+              {primary && (
+              <span className="absolute -inset-2 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-blue opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-md rounded-full pointer-events-none" />
+              )}
+              <span className="relative z-10 flex items-center gap-2">{children}</span>
+          </motion.div>
+        </Link>
+      ) : (
+        <TagComponent
+          href={href}
+          onClick={onClick}
+          className={`relative overflow-hidden group flex items-center gap-2 ${className}`}
+          primary={primary}
+        >
+          {children}
+        </TagComponent>
+      )}
     </motion.div>
+  );
+};
+
+const TagComponent = ({ href, onClick, className, primary, children }) => {
+  const Tag = href ? 'a' : 'button';
+  return (
+    <Tag
+      href={href}
+      onClick={onClick}
+      className={className}
+    >
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="flex w-full h-full items-center justify-center relative flex-1"
+      >
+          {primary && (
+          <span className="absolute -inset-2 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-blue opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-md rounded-full pointer-events-none" />
+          )}
+          <span className="relative z-10 flex items-center gap-2">{children}</span>
+      </motion.div>
+    </Tag>
   );
 };
 
@@ -234,7 +268,7 @@ const Hero = () => {
               className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-fit"
             >
               <MagneticButton 
-                href="#projects"
+                href="/projects"
                 primary={true}
                 className="px-8 py-4 rounded-full bg-white text-dark-bg font-semibold transition-colors hover:bg-neon-blue hover:text-white justify-center w-full sm:w-auto"
               >
@@ -242,7 +276,7 @@ const Hero = () => {
               </MagneticButton>
               
               <MagneticButton 
-                href="#contact"
+                href="/contact"
                 className="px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 hover:border-neon-purple/50 transition-colors justify-center w-full sm:w-auto"
               >
                 Get in Touch
@@ -348,14 +382,14 @@ const Hero = () => {
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 z-20"
       >
         <span className="text-white/40 text-xs tracking-[0.2em] uppercase font-semibold">Scroll</span>
-        <motion.a
-          href="#about"
+        <Link
+          to="/about"
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
           className="text-white/60 hover:text-neon-blue transition-colors cursor-pointer"
         >
           <ChevronDown size={24} />
-        </motion.a>
+        </Link>
       </motion.div>
 
     </section>

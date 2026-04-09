@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, Mail, FileText } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import { cn } from '../utils/cn';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,39 +19,17 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '-20% 0px -70% 0px', // Adjusted to trigger when section is in a central-ish area
-      threshold: 0
-    };
-
-    const handleIntersect = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(handleIntersect, observerOptions);
-
-    // IDs to observe - make sure these match the IDs in your section components
-    const sectionIds = ['hero', 'about', 'skills', 'projects', 'certificates', 'experience', 'contact'];
-    sectionIds.forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) observer.observe(element);
-    });
-
-    return () => observer.disconnect();
-  }, []);
+    const sectionId = location.pathname === '/' ? 'hero' : location.pathname.substring(1);
+    setActiveSection(sectionId);
+  }, [location.pathname]);
 
   const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Certificates', href: '#certificates' },
-    { name: 'Education', href: '#education' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'About', to: '/about' },
+    { name: 'Skills', to: '/skills' },
+    { name: 'Projects', to: '/projects' },
+    { name: 'Certificates', to: '/certificates' },
+    { name: 'Education', to: '/education' },
+    { name: 'Contact', to: '/contact' },
   ];
 
   return (
@@ -63,7 +43,7 @@ const Navbar = () => {
       )}
     >
       <div className="max-w-7xl mx-auto px-6 w-full flex items-center justify-between">
-        <a href="#hero" className="flex items-center group relative">
+        <Link to="/" className="flex items-center group relative">
           {/* Glowing Glass Logo Container */}
           <div className="relative w-11 h-11 flex items-center justify-center rounded-xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-md transition-all duration-500 group-hover:border-neon-blue/50 group-hover:shadow-[0_0_20px_rgba(0,240,255,0.4)]">
             {/* Ambient inner glow */}
@@ -94,16 +74,16 @@ const Navbar = () => {
 
             </svg>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => {
-            const isActive = activeSection === link.href.substring(1);
+            const isActive = activeSection === link.to.substring(1);
             return (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.to}
                 className={cn(
                   "text-sm font-medium transition-colors relative group",
                   isActive ? "text-neon-blue" : "text-white/70 hover:text-white"
@@ -114,7 +94,7 @@ const Navbar = () => {
                   "absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-neon-blue to-neon-purple transition-all",
                   isActive ? "w-full" : "w-0 group-hover:w-full"
                 )} />
-              </a>
+              </Link>
             );
           })}
         </div>
@@ -130,12 +110,12 @@ const Navbar = () => {
             <FileText size={16} className="text-neon-blue group-hover:scale-110 transition-transform" />
             Resume
           </a>
-          <a
-            href="#contact"
+          <Link
+            to="/contact"
             className="px-5 py-2 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 hover:border-neon-blue/50 transition-all text-sm font-medium text-white"
           >
             Let's Talk
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -155,11 +135,11 @@ const Navbar = () => {
           className="absolute top-full left-0 right-0 bg-dark-bg/95 backdrop-blur-xl border-b border-white/10 p-6 md:hidden flex flex-col gap-4"
         >
             {navLinks.map((link) => {
-              const isActive = activeSection === link.href.substring(1);
+              const isActive = activeSection === link.to.substring(1);
               return (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
+                  to={link.to}
                   onClick={() => setIsOpen(false)}
                   className={cn(
                     "text-lg font-medium transition-colors",
@@ -167,7 +147,7 @@ const Navbar = () => {
                   )}
                 >
                   {link.name}
-                </a>
+                </Link>
               );
             })}
             <div className="flex flex-col gap-3 pt-4 border-t border-white/10">
@@ -181,13 +161,13 @@ const Navbar = () => {
                 <FileText size={18} className="text-neon-blue" />
                 Resume
               </a>
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-neon-blue text-dark-bg font-bold"
                 onClick={() => setIsOpen(false)}
               >
                 Let's Talk
-              </a>
+              </Link>
             </div>
         </motion.div>
       )}
