@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Mail } from 'lucide-react';
+import { Menu, X, Mail, FileText } from 'lucide-react';
 import { cn } from '../utils/cn';
 
 const Navbar = () => {
@@ -122,6 +122,15 @@ const Navbar = () => {
         {/* Action Buttons */}
         <div className="hidden md:flex items-center gap-4">
           <a
+            href="https://drive.google.com/file/d/1k7x4ptqYJBbyH-kzHOR9ROQ1FkrFbY-1/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 hover:border-neon-blue/50 transition-all text-sm font-medium text-white group"
+          >
+            <FileText size={16} className="text-neon-blue group-hover:scale-110 transition-transform" />
+            Resume
+          </a>
+          <a
             href="#contact"
             className="px-5 py-2 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 hover:border-neon-blue/50 transition-all text-sm font-medium text-white"
           >
@@ -145,22 +154,41 @@ const Navbar = () => {
           animate={{ opacity: 1, scale: 1 }}
           className="absolute top-full left-0 right-0 bg-dark-bg/95 backdrop-blur-xl border-b border-white/10 p-6 md:hidden flex flex-col gap-4"
         >
-          {navLinks.map((link) => {
-            const isActive = activeSection === link.href.substring(1);
-            return (
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.substring(1);
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className={cn(
+                    "text-lg font-medium transition-colors",
+                    isActive ? "text-neon-blue" : "text-white/80 hover:text-neon-blue"
+                  )}
+                >
+                  {link.name}
+                </a>
+              );
+            })}
+            <div className="flex flex-col gap-3 pt-4 border-t border-white/10">
               <a
-                key={link.name}
-                href={link.href}
+                href="https://drive.google.com/file/d/1k7x4ptqYJBbyH-kzHOR9ROQ1FkrFbY-1/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white font-medium"
                 onClick={() => setIsOpen(false)}
-                className={cn(
-                  "text-lg font-medium transition-colors",
-                  isActive ? "text-neon-blue" : "text-white/80 hover:text-neon-blue"
-                )}
               >
-                {link.name}
+                <FileText size={18} className="text-neon-blue" />
+                Resume
               </a>
-            );
-          })}
+              <a
+                href="#contact"
+                className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-neon-blue text-dark-bg font-bold"
+                onClick={() => setIsOpen(false)}
+              >
+                Let's Talk
+              </a>
+            </div>
         </motion.div>
       )}
     </motion.nav>
