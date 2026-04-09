@@ -6,7 +6,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 // --- Magnetic Button Component ---
-const MagneticButton = ({ children, className, href, onClick, primary }) => {
+const MagneticButton = ({ children, className, href, onClick, primary, target, rel }) => {
   const ref = useRef(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -60,6 +60,8 @@ const MagneticButton = ({ children, className, href, onClick, primary }) => {
           onClick={onClick}
           className={`relative overflow-hidden group flex items-center gap-2 ${className}`}
           primary={primary}
+          target={target}
+          rel={rel}
         >
           {children}
         </TagComponent>
@@ -68,13 +70,15 @@ const MagneticButton = ({ children, className, href, onClick, primary }) => {
   );
 };
 
-const TagComponent = ({ href, onClick, className, primary, children }) => {
+const TagComponent = ({ href, onClick, className, primary, children, target, rel }) => {
   const Tag = href ? 'a' : 'button';
   return (
     <Tag
       href={href}
       onClick={onClick}
       className={className}
+      target={target}
+      rel={rel}
     >
       <motion.div
         whileHover={{ scale: 1.05 }}
@@ -276,10 +280,13 @@ const Hero = () => {
               </MagneticButton>
               
               <MagneticButton 
-                href="/contact"
-                className="px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 hover:border-neon-purple/50 transition-colors justify-center w-full sm:w-auto"
+                href="https://drive.google.com/file/d/1k7x4ptqYJBbyH-kzHOR9ROQ1FkrFbY-1/view?usp=sharing"
+                primary={true}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 rounded-full bg-white text-dark-bg font-semibold transition-colors hover:bg-neon-blue hover:text-white justify-center w-full sm:w-auto"
               >
-                Get in Touch
+                View Resume <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </MagneticButton>
             </motion.div>
 

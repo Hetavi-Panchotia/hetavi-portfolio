@@ -61,7 +61,6 @@ const SkillCard = ({ skill, index, onClick }) => {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.2 } }}
       transition={{ type: "spring", stiffness: 100, damping: 15, delay: index * 0.05 }}
-      lazy
       className={`w-full max-w-[140px] sm:max-w-[160px] md:max-w-[180px] ${isOffset ? 'mt-0 md:mt-12' : 'mt-0'}`}
     >
       <motion.div
@@ -170,7 +169,7 @@ export default function Skills() {
         </div>
 
         {/* Cards Uneven Grid Layout */}
-        <motion.div layout className="flex flex-wrap justify-center items-start gap-4 md:gap-8 w-full max-w-5xl perspective-[1000px]">
+        <motion.div layout className="flex flex-wrap justify-center items-start gap-4 md:gap-8 w-full max-w-5xl perspective-[1000px] relative">
           <AnimatePresence mode="popLayout">
             {filteredSkills.map((skill, index) => (
               <SkillCard 
