@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, ChevronLeft, ChevronRight, X, Maximize2, MonitorPlay } from 'lucide-react';
+import { ExternalLink, Github, ChevronLeft, ChevronRight, X, Maximize2, MonitorPlay, Youtube } from 'lucide-react';
 
 const projects = [
   {
@@ -10,7 +10,8 @@ const projects = [
     tech: ["HTML", "CSS", "JavaScript"],
     image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774711968/Screenshot_2026-03-28_210214_bqy5bo.png",
     live: "https://ashbyclone-108563.netlify.app/",
-    github: "https://github.com/Hetavi-Panchotia/Ashby_Clone"
+    github: "https://github.com/Hetavi-Panchotia/Ashby_Clone",
+    youtube: "https://youtu.be/YgyRL6WyFn0"
   },
   {
     id: 2,
@@ -19,7 +20,8 @@ const projects = [
     tech: ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
     image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774712045/Screenshot_2026-03-28_210349_v5asrh.png",
     live: "https://careertrack-flame.vercel.app/",
-    github: "https://github.com/Hetavi-Panchotia/careertrack"
+    github: "https://github.com/Hetavi-Panchotia/careertrack",
+    youtube: "https://youtube.com/"
   },
   {
     id: 3,
@@ -28,7 +30,8 @@ const projects = [
     tech: ["React", "MongoDB", "Node.js", "Express.js", "Tailwind CSS"],
     image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774712197/Screenshot_2026-03-28_210447_z0yy8a.png",
     live: "https://path-pilot-cyan.vercel.app/",
-    github: "https://github.com/Hetavi-Panchotia/Path-Pilot"
+    github: "https://github.com/Hetavi-Panchotia/Path-Pilot",
+    youtube: "https://youtube.com/"
   },
   {
     id: 4,
@@ -37,7 +40,8 @@ const projects = [
     tech: ["React", "Redux Toolkit", "Tailwind CSS"],
     image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774712199/Screenshot_2026-03-28_210537_aclnkc.png",
     live: "https://movies-react-poject.netlify.app/https://movies-react-poject.netlify.app/",
-    github: "https://github.com/Hetavi-Panchotia/ReactTest-movie-"
+    github: "https://github.com/Hetavi-Panchotia/ReactTest-movie-",
+    youtube: "https://youtube.com/"
   },
   {
     id: 5,
@@ -46,7 +50,8 @@ const projects = [
     tech: ["HTML", "CSS", "JavaScript"],
     image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774712199/Screenshot_2026-03-28_210613_o1l3hv.png",
     live: "https://hetavi-liciousclone.netlify.app/",
-    github: "https://github.com/Hetavi-Panchotia/Licious_Clone"
+    github: "https://github.com/Hetavi-Panchotia/Licious_Clone",
+    youtube: "https://youtu.be/P6_4IJ7R4hU"
   },
   {
     id: 6,
@@ -55,7 +60,8 @@ const projects = [
     tech: ["React", "Tailwind CSS"],
     image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774600501/Screenshot_2026-03-27_135126_ysiqdt.png",
     live: "https://life-of-a-developer-hetavi.netlify.app/",
-    github: "https://github.com/Hetavi-Panchotia/Life-of-a-Developer"
+    github: "https://github.com/Hetavi-Panchotia/Life-of-a-Developer",
+    youtube: "https://youtube.com/"
   }
 ];
 
@@ -356,6 +362,17 @@ const Projects = () => {
                       <ExternalLink size={18} /> Live Demo
                     </a>
                     
+                    {selectedProject.youtube && (
+                      <a 
+                        href={selectedProject.youtube}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 bg-[#FF0000]/10 hover:bg-[#FF0000]/20 border border-[#FF0000]/20 text-[#FF0000] px-5 py-2.5 rounded-xl font-semibold transition-all transform hover:-translate-y-1 w-full"
+                      >
+                        <Youtube size={18} /> YouTube
+                      </a>
+                    )}
+
                     <a 
                       href={selectedProject.github}
                       target="_blank"
