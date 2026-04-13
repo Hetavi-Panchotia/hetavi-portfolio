@@ -33,16 +33,16 @@ const projects = [
     github: "https://github.com/Hetavi-Panchotia/Path-Pilot",
     youtube: "https://youtube.com/"
   },
-  {
-    id: 4,
-    title: "Movie Gallery",
-    description: "Movie Gallery is a web application designed to help users organize and manage their movie collections efficiently. The platform provides a centralized dashboard where users can track their movies.",
-    tech: ["React", "Redux Toolkit", "Tailwind CSS"],
-    image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774712199/Screenshot_2026-03-28_210537_aclnkc.png",
-    live: "https://movies-react-poject.netlify.app/https://movies-react-poject.netlify.app/",
-    github: "https://github.com/Hetavi-Panchotia/ReactTest-movie-",
-    youtube: "https://youtube.com/"
-  },
+  // {
+  //   id: 4,
+  //   title: "Movie Gallery",
+  //   description: "Movie Gallery is a web application designed to help users organize and manage their movie collections efficiently. The platform provides a centralized dashboard where users can track their movies.",
+  //   tech: ["React", "Redux Toolkit", "Tailwind CSS"],
+  //   image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774712199/Screenshot_2026-03-28_210537_aclnkc.png",
+  //   live: "https://movies-react-poject.netlify.app/https://movies-react-poject.netlify.app/",
+  //   github: "https://github.com/Hetavi-Panchotia/ReactTest-movie-",
+  //   youtube: "https://youtube.com/"
+  // },
   {
     id: 5,
     title: "Licious Clone",
