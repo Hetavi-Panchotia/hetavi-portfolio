@@ -9,7 +9,7 @@ const projects = [
     description: "A clone of Ashby website which is a job board for startups.",
     tech: ["HTML", "CSS", "JavaScript"],
     image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774711968/Screenshot_2026-03-28_210214_bqy5bo.png",
-    live: "https://ashbyclone-108563.netlify.app/",
+    live: "https://ashby-clone.vercel.app/",
     github: "https://github.com/Hetavi-Panchotia/Ashby_Clone",
     youtube: "https://youtu.be/YgyRL6WyFn0"
   },
@@ -49,7 +49,7 @@ const projects = [
     description : "A clone of Licious Website",
     tech: ["HTML", "CSS", "JavaScript"],
     image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774712199/Screenshot_2026-03-28_210613_o1l3hv.png",
-    live: "https://hetavi-liciousclone.netlify.app/",
+    live: "https://licious-clone-phi.vercel.app/",
     github: "https://github.com/Hetavi-Panchotia/Licious_Clone",
     youtube: "https://youtu.be/P6_4IJ7R4hU"
   },
@@ -59,7 +59,7 @@ const projects = [
     description : "“Life of a Developer” is an interactive storytelling web experience that humorously captures the journey of becoming a software developer.",
     tech: ["React", "Tailwind CSS"],
     image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774600501/Screenshot_2026-03-27_135126_ysiqdt.png",
-    live: "https://life-of-a-developer-hetavi.netlify.app/",
+    live: "https://life-of-a-developer-chi.vercel.app/",
     github: "https://github.com/Hetavi-Panchotia/Life-of-a-Developer",
     youtube: "https://youtube.com/"
   }
