@@ -280,7 +280,7 @@ const Hero = () => {
               </MagneticButton>
               
               <MagneticButton 
-                href="https://drive.google.com/file/d/1k7x4ptqYJBbyH-kzHOR9ROQ1FkrFbY-1/view?usp=sharing"
+                href="https://drive.google.com/file/d/1qkciUBzq_B77P-yAvDAv7WBXh6U_zySn/view?usp=sharing"
                 primary={true}
                 target="_blank"
                 rel="noopener noreferrer"

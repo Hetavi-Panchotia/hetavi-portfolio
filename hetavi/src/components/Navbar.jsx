@@ -133,7 +133,7 @@ const Navbar = () => {
         {/* Action Buttons */}
         <div className="hidden md:flex items-center gap-4">
           <a
-            href="https://drive.google.com/uc?export=download&id=1k7x4ptqYJBbyH-kzHOR9ROQ1FkrFbY-1"
+            href="https://drive.google.com/file/d/1qkciUBzq_B77P-yAvDAv7WBXh6U_zySn/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 hover:border-neon-blue/50 transition-all text-sm font-medium text-white group"
@@ -186,7 +186,7 @@ const Navbar = () => {
               })}
               <div className="flex flex-col gap-3 pt-4 border-t border-white/10">
                 <a
-                  href="https://drive.google.com/uc?export=download&id=1k7x4ptqYJBbyH-kzHOR9ROQ1FkrFbY-1"
+                  href="https://drive.google.com/file/d/1qkciUBzq_B77P-yAvDAv7WBXh6U_zySn/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white font-medium"

@@ -23,7 +23,7 @@ const projects = [
     image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774712045/Screenshot_2026-03-28_210349_v5asrh.png",
     live: "https://careertrack-flame.vercel.app/",
     github: "https://github.com/Hetavi-Panchotia/careertrack",
-    youtube: "https://youtube.com/",
+    youtube: "",
     categories: ["Full Stack"]
   },
   {
@@ -34,7 +34,7 @@ const projects = [
     image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774712197/Screenshot_2026-03-28_210447_z0yy8a.png",
     live: "https://path-pilot-cyan.vercel.app/",
     github: "https://github.com/Hetavi-Panchotia/Path-Pilot",
-    youtube: "https://youtube.com/",
+    youtube: "",
     categories: ["Full Stack"]
   },
   {
@@ -56,7 +56,7 @@ const projects = [
     image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774600501/Screenshot_2026-03-27_135126_ysiqdt.png",
     live: "https://life-of-a-developer-chi.vercel.app/",
     github: "https://github.com/Hetavi-Panchotia/Life-of-a-Developer",
-    youtube: "https://youtube.com/",
+    youtube: "",
     categories: ["Games", "Frontend"]
   },
   {
