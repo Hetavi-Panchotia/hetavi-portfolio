@@ -1,10 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-neon-blue: #00f0ff;
-  --color-neon-purple: #8a2be2;
-  --color-dark-bg: #09090b;
-  --color-dark-surface: rgba(255, 255, 255, 0.05);
+  --color-earth-bg: #FDFBF7;
+  --color-earth-text: #2D2D2D;
+  --color-earth-muted: #6B6B6B;
+  --color-earth-accent: #6A7B4E;
+  --color-earth-secondary: #A38E75;
+  --color-earth-card: #FFFFFF;
+  --color-earth-border: #E5E0D8;
   
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-heading: 'Outfit', system-ui, -apple-system, sans-serif;
@@ -12,13 +15,13 @@
 
 @layer base {
   :root {
-    --bg-color: #ffffff;
-    --text-color: #18181b;
+    --bg-color: #FDFBF7;
+    --text-color: #2D2D2D;
   }
   
   .dark {
-    --bg-color: #09090b; /* dark-bg */
-    --text-color: #ffffff;
+    --bg-color: #FDFBF7;
+    --text-color: #2D2D2D;
   }
   
   body {
@@ -39,25 +42,25 @@
   }
   
   ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
+    background: #E5E0D8;
     border-radius: 4px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.4);
+    background: #A38E75;
   }
 }
 
 @layer utilities {
-  .glass {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 dark:bg-black/20 dark:border-white/5;
+  .glass-warm {
+    @apply bg-white/70 backdrop-blur-md border border-earth-border shadow-sm;
   }
   
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-neon-blue to-neon-purple;
+  .text-gradient-warm {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-earth-text to-earth-accent;
   }
   
-  .neon-glow {
-    filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.5));
+  .soft-shadow {
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.05));
   }
 }

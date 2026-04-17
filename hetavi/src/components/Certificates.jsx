@@ -126,7 +126,7 @@ const Certificates = () => {
   };
 
   return (
-    <section id="certificates" className="py-32 relative overflow-hidden bg-dark-bg min-h-screen flex flex-col justify-center">
+    <section id="certificates" className="py-32 relative overflow-hidden bg-earth-bg min-h-screen flex flex-col justify-center">
       
 
 
@@ -137,7 +137,7 @@ const Certificates = () => {
           transition={{ duration: 40, repeat: Infinity, repeatType: 'reverse' }}
           className="w-full h-full"
           style={{
-            backgroundImage: 'radial-gradient(ellipse at center, rgba(138,43,226,0.3) 0%, transparent 60%)',
+            backgroundImage: 'radial-gradient(ellipse at center, rgba(163, 142, 117,0.3) 0%, transparent 60%)',
             backgroundSize: '150% 150%'
           }}
         />
@@ -154,11 +154,11 @@ const Certificates = () => {
           className="text-center mb-16 md:mb-24"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black mb-4 uppercase tracking-widest text-shadow-glow">
-            <span className="text-white">Featured </span>
-            <span className="text-neon-purple drop-shadow-[0_0_15px_rgba(138,43,226,0.5)]">Awards</span>
+            <span className="text-earth-text">Featured </span>
+            <span className="text-earth-secondary drop-shadow-[0_0_15px_rgba(163, 142, 117,0.5)]">Awards</span>
           </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-blue mx-auto rounded-full blur-[1px]" />
-          {/* <p className="mt-4 text-white/50 text-sm md:text-base max-w-lg mx-auto">
+          <div className="w-24 h-1.5 bg-gradient-to-r from-earth-accent via-earth-secondary to-earth-accent mx-auto rounded-full blur-[1px]" />
+          {/* <p className="mt-4 text-earth-text/50 text-sm md:text-base max-w-lg mx-auto">
             A curated collection of my professional achievements, hackathon victories, and technical certifications.
           </p> */}
         </motion.div>
@@ -173,14 +173,14 @@ const Certificates = () => {
           {/* Navigation Arrows (Desktop) */}
           <button 
             onClick={prevSlide}
-            className="absolute left-2 md:left-10 z-50 p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-md text-white/70 hover:text-white transition-all hover:scale-110 shadow-[0_0_20px_rgba(0,0,0,0.5)] hidden md:flex"
+            className="absolute left-2 md:left-10 z-50 p-4 rounded-full bg-white/60 hover:bg-white/70 border border-earth-border backdrop-blur-md text-earth-text/70 hover:text-earth-text transition-all hover:scale-110 shadow-[0_0_20px_rgba(0,0,0,0.5)] hidden md:flex"
           >
             <ChevronLeft size={28} />
           </button>
           
           <button 
             onClick={nextSlide}
-            className="absolute right-2 md:right-10 z-50 p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-md text-white/70 hover:text-white transition-all hover:scale-110 shadow-[0_0_20px_rgba(0,0,0,0.5)] hidden md:flex"
+            className="absolute right-2 md:right-10 z-50 p-4 rounded-full bg-white/60 hover:bg-white/70 border border-earth-border backdrop-blur-md text-earth-text/70 hover:text-earth-text transition-all hover:scale-110 shadow-[0_0_20px_rgba(0,0,0,0.5)] hidden md:flex"
           >
             <ChevronRight size={28} />
           </button>
@@ -197,12 +197,12 @@ const Certificates = () => {
                 dragElastic={0.2}
                 onDragEnd={handleDragEnd}
                 animate={getCardStyles(index)}
-                transition={{ type: "spring", stiffness: 100, damping: 20, mass: 1 }}
-                className="absolute w-[80%] max-w-[320px] md:max-w-[450px] rounded-[2rem] glass p-1 cursor-grab active:cursor-grabbing border transition-colors duration-500"
+                transition={{ type: "tween", ease: "easeInOut" }}
+                className="absolute w-[80%] max-w-[320px] md:max-w-[450px] rounded-[2rem] glass-warm p-1 cursor-grab active:cursor-grabbing border transition-colors duration-500"
                 style={{
-                  borderColor: isActive ? "rgba(138,43,226,0.6)" : "rgba(255,255,255,0.05)",
+                  borderColor: isActive ? "rgba(163, 142, 117,0.6)" : "rgba(45, 45, 45,0.05)",
                   backgroundColor: isActive ? "rgba(20,20,30,0.9)" : "rgba(10,10,15,0.5)",
-                  boxShadow: isActive ? "0 30px 60px rgba(0,0,0,0.8), inset 0 0 40px rgba(138,43,226,0.2)" : "0 10px 30px rgba(0,0,0,0.6)",
+                  boxShadow: isActive ? "0 30px 60px rgba(0,0,0,0.8), inset 0 0 40px rgba(163, 142, 117,0.2)" : "0 10px 30px rgba(0,0,0,0.6)",
                   transformStyle: "preserve-3d"
                 }}
                 onClick={() => {
@@ -229,7 +229,7 @@ const Certificates = () => {
                       <motion.button 
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="self-center bg-white/20 hover:bg-white/30 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/20 text-white font-semibold flex items-center gap-2 mb-4"
+                        className="self-center bg-white/20 hover:bg-white/30 backdrop-blur-md px-6 py-2.5 rounded-full border border-earth-border text-earth-text font-semibold flex items-center gap-2 mb-4"
                         onClick={(e) => {
                           e.stopPropagation();
                           setSelectedCert(cert);
@@ -242,18 +242,18 @@ const Certificates = () => {
 
                   {/* Informational Footer */}
                   <div className="p-5 md:p-6 pb-4">
-                    <h3 className="text-xl md:text-2xl font-bold mb-1 text-white truncate drop-shadow-md">
+                    <h3 className="text-xl md:text-2xl font-bold mb-1 text-earth-text truncate drop-shadow-md">
                       {cert.title}
                     </h3>
-                    <div className="flex justify-between items-center text-white/60 text-sm md:text-base font-medium">
+                    <div className="flex justify-between items-center text-earth-text/60 text-sm md:text-base font-medium">
                       <span>{cert.issuer}</span>
-                      <span className="text-neon-blue tracking-wide">{cert.date}</span>
+                      <span className="text-earth-accent tracking-wide">{cert.date}</span>
                     </div>
                   </div>
 
                   {/* Top Right Award Icon */}
-                  <div className="absolute top-4 right-4 z-20 bg-black/60 backdrop-blur-xl p-2.5 rounded-full border border-white/10 shadow-xl">
-                    <Award className="text-neon-purple" size={24} />
+                  <div className="absolute top-4 right-4 z-20 bg-black/60 backdrop-blur-xl p-2.5 rounded-full border border-earth-border shadow-xl">
+                    <Award className="text-earth-secondary" size={24} />
                   </div>
 
                 </div>
@@ -268,7 +268,7 @@ const Certificates = () => {
             <button
               key={idx}
               onClick={() => setActiveIndex(idx)}
-              className={`h-2 rounded-full transition-all duration-500 ease-out ${idx === activeIndex ? 'w-10 bg-neon-purple shadow-[0_0_10px_rgba(138,43,226,0.8)]' : 'w-2 bg-white/20 hover:bg-white/50'}`}
+              className={`h-2 rounded-full transition-all duration-500 ease-out ${idx === activeIndex ? 'w-10 bg-earth-secondary shadow-[0_0_10px_rgba(163, 142, 117,0.8)]' : 'w-2 bg-white/20 hover:bg-white/600'}`}
               aria-label={`Go to slide ${idx + 1}`}
             />
           ))}
@@ -296,17 +296,17 @@ const Certificates = () => {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="relative w-full max-w-4xl bg-dark-bg/90 border border-white/10 rounded-[2rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,1)] z-10 flex flex-col max-h-[90vh]"
+              transition={{ type: "tween", ease: "easeInOut" }}
+              className="relative w-full max-w-4xl bg-earth-bg/90 border border-earth-border rounded-[2rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,1)] z-10 flex flex-col max-h-[90vh]"
               onClick={(e) => e.stopPropagation()}
             >
               
               {/* Top Bar Navigation */}
               <div className="flex justify-between items-center p-4 border-b border-white/5 bg-black/30 backdrop-blur-md">
-                <span className="text-white/50 text-sm font-medium tracking-widest uppercase pl-2">Credential Explorer</span>
+                <span className="text-earth-text/50 text-sm font-medium tracking-widest uppercase pl-2">Credential Explorer</span>
                 <button 
                   onClick={() => setSelectedCert(null)}
-                  className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-white transition-colors"
+                  className="p-2 rounded-full bg-white/60 hover:bg-white/70 text-earth-text transition-colors"
                 >
                   <X size={20} />
                 </button>
@@ -325,8 +325,8 @@ const Certificates = () => {
               <div className="p-6 md:p-8 bg-gradient-to-t from-black/80 to-transparent">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                   <div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">{selectedCert.title}</h2>
-                    <div className="flex items-center gap-4 text-white/60">
+                    <h2 className="text-2xl md:text-3xl font-bold text-earth-text mb-2">{selectedCert.title}</h2>
+                    <div className="flex items-center gap-4 text-earth-text/60">
                       <span className="flex items-center gap-2"><Award size={16}/> {selectedCert.issuer}</span>
                       <span className="w-1 h-1 rounded-full bg-white/30" />
                       <span>{selectedCert.date}</span>
@@ -337,7 +337,7 @@ const Certificates = () => {
                     href={selectedCert.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 bg-neon-purple/20 hover:bg-neon-purple/30 border border-neon-purple/50 text-white px-6 py-3 rounded-full font-semibold transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
+                    className="inline-flex items-center justify-center gap-2 bg-earth-secondary/20 hover:bg-earth-secondary/30 border border-earth-secondary/50 text-earth-text px-6 py-3 rounded-full font-semibold transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
                   >
                     Verify Credential <ExternalLink size={18} />
                   </a>

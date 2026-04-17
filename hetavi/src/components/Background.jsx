@@ -3,41 +3,40 @@ import { motion } from 'framer-motion';
 
 const Background = () => {
   return (
-    <div className="fixed inset-0 z-0 overflow-hidden bg-dark-bg pointer-events-none">
-      {/* Dynamic gradient blobs */}
+    <div className="fixed inset-0 z-0 overflow-hidden bg-earth-bg pointer-events-none">
+      {/* Soft warm gradient blob */}
       <motion.div
-        className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full mix-blend-screen filter blur-[100px] opacity-30 bg-neon-purple"
+        className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full mix-blend-multiply filter blur-[100px] opacity-20 bg-earth-secondary"
         animate={{
-          x: [0, 100, 0],
-          y: [0, 50, 0],
-          scale: [1, 1.1, 1],
+          x: [0, 50, 0],
+          y: [0, 30, 0],
+          scale: [1, 1.05, 1],
         }}
         transition={{
           duration: 20,
           repeat: Infinity,
-          ease: "linear"
+          ease: "easeInOut"
         }}
       />
       <motion.div
-        className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full mix-blend-screen filter blur-[100px] opacity-20 bg-neon-blue"
+        className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full mix-blend-multiply filter blur-[100px] opacity-10 bg-earth-accent"
         animate={{
-          x: [0, -100, 0],
-          y: [0, -50, 0],
-          scale: [1, 1.2, 1],
+          x: [0, -50, 0],
+          y: [0, -30, 0],
+          scale: [1, 1.1, 1],
         }}
         transition={{
           duration: 25,
           repeat: Infinity,
-          ease: "linear"
+          ease: "easeInOut"
         }}
       />
       
-      {/* Grid pattern overlay */}
+      {/* Soft grain overlay */}
       <div 
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.04]"
         style={{
-          backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
-          backgroundSize: '40px 40px'
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")'
         }}
       />
     </div>

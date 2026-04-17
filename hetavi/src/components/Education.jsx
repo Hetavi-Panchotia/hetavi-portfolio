@@ -31,11 +31,11 @@ const EducationCard = ({ item, index, isEven }) => {
       }`}
     >
       {/* Timeline Dot with Pulse Effect */}
-      <div className="absolute left-[-16px] md:left-1/2 md:transform md:-translate-x-1/2 w-8 h-8 rounded-full bg-dark-bg border-2 border-neon-purple flex items-center justify-center z-20 shadow-[0_0_15px_rgba(138,43,226,0.5)]">
+      <div className="absolute left-[-16px] md:left-1/2 md:transform md:-translate-x-1/2 w-8 h-8 rounded-full bg-earth-bg border-2 border-earth-secondary flex items-center justify-center z-20 shadow-[0_0_15px_rgba(163, 142, 117,0.5)]">
         <motion.div 
           animate={{ scale: [1, 1.2, 1] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-2.5 h-2.5 rounded-full bg-neon-blue" 
+          className="w-2.5 h-2.5 rounded-full bg-earth-accent" 
         />
       </div>
 
@@ -45,39 +45,39 @@ const EducationCard = ({ item, index, isEven }) => {
       }`}>
         <motion.div 
           whileHover={{ y: -5, scale: 1.02 }}
-          className="glass p-8 rounded-[2rem] border border-white/5 hover:border-neon-purple/30 transition-all duration-500 overflow-hidden relative group"
+          className="glass-warm p-8 rounded-[2rem] border border-white/5 hover:border-earth-secondary/30 transition-all duration-500 overflow-hidden relative group"
           style={{
             boxShadow: "0 20px 40px rgba(0,0,0,0.4)"
           }}
         >
           {/* Subtle inner glow on hover */}
-          <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-br from-earth-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
           
           <div className={`flex items-center gap-3 mb-4 ${isEven ? 'md:justify-end' : 'justify-start'}`}>
-            <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-neon-purple">
+            <div className="p-2.5 rounded-xl bg-white/60 border border-earth-border text-earth-secondary">
               <School size={20} />
             </div>
-            <span className="text-neon-blue font-mono tracking-wider text-sm">{item.date}</span>
+            <span className="text-earth-accent font-mono tracking-wider text-sm">{item.date}</span>
           </div>
 
-          <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-neon-purple transition-colors duration-300">
+          <h3 className="text-2xl font-bold mb-3 text-earth-text group-hover:text-earth-secondary transition-colors duration-300">
             {item.degree}
           </h3>
           
-          <div className={`flex flex-wrap gap-4 text-sm text-white/60 mb-6 font-medium ${
+          <div className={`flex flex-wrap gap-4 text-sm text-earth-text/60 mb-6 font-medium ${
             isEven ? 'md:justify-end' : 'justify-start'
           }`}>
             <span className="flex items-center gap-1.5">
-              <GraduationCap size={16} className="text-neon-purple" /> {item.institution}
+              <GraduationCap size={16} className="text-earth-secondary" /> {item.institution}
             </span>
           </div>
           
-          <p className="text-white/70 leading-relaxed mb-6 text-sm md:text-base">
+          <p className="text-earth-text/70 leading-relaxed mb-6 text-sm md:text-base">
             {item.description}
           </p>
           
-          <div className={`flex items-center gap-1.5 text-xs font-medium tracking-wide text-white/40 uppercase ${isEven ? 'md:justify-end' : ''}`}>
-            <MapPin size={14} className="text-neon-blue" /> {item.location}
+          <div className={`flex items-center gap-1.5 text-xs font-medium tracking-wide text-earth-text/40 uppercase ${isEven ? 'md:justify-end' : ''}`}>
+            <MapPin size={14} className="text-earth-accent" /> {item.location}
           </div>
         </motion.div>
       </div>
@@ -97,12 +97,11 @@ const Education = () => {
 
   const scaleY = useSpring(scrollYProgress, {
     stiffness: 100,
-    damping: 30,
     restDelta: 0.001
   });
 
   return (
-    <section id="education" ref={containerRef} className="py-32 relative overflow-hidden bg-dark-bg">
+    <section id="education" ref={containerRef} className="py-32 relative overflow-hidden bg-earth-bg">
       
       {/* Background Ambience */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
@@ -111,7 +110,7 @@ const Education = () => {
           transition={{ duration: 40, repeat: Infinity, repeatType: 'reverse' }}
           className="w-full h-full"
           style={{
-            backgroundImage: 'radial-gradient(ellipse at bottom left, rgba(138,43,226,0.3) 0%, transparent 60%)',
+            backgroundImage: 'radial-gradient(ellipse at bottom left, rgba(163, 142, 117,0.3) 0%, transparent 60%)',
             backgroundSize: '150% 150%'
           }}
         />
@@ -130,11 +129,11 @@ const Education = () => {
           className="text-center mb-24"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black mb-4 uppercase tracking-widest text-shadow-glow">
-            <span className="text-white">Academic </span>
-            <span className="text-neon-purple drop-shadow-[0_0_15px_rgba(138,43,226,0.5)]">Journey</span>
+            <span className="text-earth-text">Academic </span>
+            <span className="text-earth-secondary drop-shadow-[0_0_15px_rgba(163, 142, 117,0.5)]">Journey</span>
           </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-blue mx-auto rounded-full blur-[1px]" />
-          <p className="mt-4 text-white/50 text-sm md:text-base max-w-lg mx-auto">
+          <div className="w-24 h-1.5 bg-gradient-to-r from-earth-accent via-earth-secondary to-earth-accent mx-auto rounded-full blur-[1px]" />
+          <p className="mt-4 text-earth-text/50 text-sm md:text-base max-w-lg mx-auto">
             My educational background and the milestones that shaped my technical foundation.
           </p>
         </motion.div>
@@ -142,10 +141,10 @@ const Education = () => {
         <div className="relative max-w-5xl mx-auto">
           
           {/* Animated Vertical Line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[2px] bg-white/5 transform md:-translate-x-1/2 overflow-hidden">
+          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[2px] bg-white/60 transform md:-translate-x-1/2 overflow-hidden">
             <motion.div 
               style={{ scaleY, originY: 0 }}
-              className="w-full h-full bg-gradient-to-b from-neon-blue via-neon-purple to-neon-blue" 
+              className="w-full h-full bg-gradient-to-b from-earth-accent via-earth-secondary to-earth-accent" 
             />
           </div>
 

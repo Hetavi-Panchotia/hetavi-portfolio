@@ -31,7 +31,7 @@ function App() {
   }, [pathname]);
 
   return (
-    <div className="relative min-h-screen selection:bg-neon-purple/30 selection:text-white dark">
+    <div className="relative min-h-screen selection:bg-earth-secondary/30 selection:text-earth-text">
       <CustomCursor />
       <SEO />
       <Background />

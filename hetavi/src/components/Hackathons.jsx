@@ -19,7 +19,7 @@ const hackathonData = [
 
 const Hackathons = () => {
   return (
-    <section id="hackathons" className="py-32 relative overflow-hidden bg-dark-bg min-h-screen">
+    <section id="hackathons" className="py-32 relative overflow-hidden bg-earth-bg min-h-screen">
       
       {/* Background Ambience */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
@@ -28,7 +28,7 @@ const Hackathons = () => {
           transition={{ duration: 40, repeat: Infinity, repeatType: 'reverse' }}
           className="w-full h-full"
           style={{
-            backgroundImage: 'radial-gradient(ellipse at center, rgba(0,240,255,0.15) 0%, transparent 60%)',
+            backgroundImage: 'radial-gradient(ellipse at center, rgba(106, 123, 78,0.15) 0%, transparent 60%)',
             backgroundSize: '150% 150%'
           }}
         />
@@ -45,14 +45,14 @@ const Hackathons = () => {
           className="text-center mb-16 md:mb-24"
         >
           <div className="flex justify-center items-center gap-3 mb-4">
-             <Rocket className="text-neon-blue animate-bounce" size={24} />
-             <span className="text-sm uppercase tracking-[0.4em] text-white/40 font-bold">The Archives</span>
+             <Rocket className="text-earth-accent animate-bounce" size={24} />
+             <span className="text-sm uppercase tracking-[0.4em] text-earth-text/40 font-bold">The Archives</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-heading font-black text-white uppercase tracking-tighter leading-none text-shadow-glow">
-            Hackathon <span className="text-neon-blue drop-shadow-[0_0_15px_rgba(0,240,255,0.5)]">Journey</span>
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-heading font-black text-earth-text uppercase tracking-tighter leading-none text-shadow-glow">
+            Hackathon <span className="text-earth-accent drop-shadow-[0_0_15px_rgba(106, 123, 78,0.5)]">Journey</span>
           </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-neon-purple via-neon-blue to-neon-purple mx-auto mt-6 rounded-full blur-[1px]" />
-          {/* <p className="mt-6 text-white/50 text-sm md:text-base max-w-lg mx-auto leading-relaxed">
+          <div className="w-24 h-1.5 bg-gradient-to-r from-earth-secondary via-earth-accent to-earth-secondary mx-auto mt-6 rounded-full blur-[1px]" />
+          {/* <p className="mt-6 text-earth-text/50 text-sm md:text-base max-w-lg mx-auto leading-relaxed">
             Tactical experience logged across multiple high-stakes development arenas. Problem-solving under pressure.
           </p> */}
         </motion.div>
@@ -68,18 +68,18 @@ const Hackathons = () => {
               transition={{ duration: 0.8, delay: idx * 0.1 }}
               className="group relative"
             >
-              <div className="glass p-8 md:p-12 rounded-[2.5rem] border border-white/5 bg-white/5 backdrop-blur-3xl overflow-hidden transition-all duration-500 hover:border-white/20 hover:bg-white/10 group-hover:shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+              <div className="glass-warm p-8 md:p-12 rounded-[2.5rem] border border-white/5 bg-white/60 backdrop-blur-3xl overflow-hidden transition-all duration-500 hover:border-earth-border hover:bg-white/70 group-hover:shadow-[0_0_50px_rgba(0,0,0,0.5)]">
                 
                 <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl ${hack.color} opacity-0 group-hover:opacity-10 transition-opacity duration-1000 blur-3xl`} />
                 
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12">
-                  <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-white/10 pb-8 lg:pb-0">
-                     <span className="text-xs font-mono uppercase tracking-[0.3em] text-white/40 mb-2 block">{hack.year} • {hack.organizer}</span>
-                     <h3 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mb-6 group-hover:text-neon-blue transition-colors leading-tight">{hack.name}</h3>
+                  <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-earth-border pb-8 lg:pb-0">
+                     <span className="text-xs font-mono uppercase tracking-[0.3em] text-earth-text/40 mb-2 block">{hack.year} • {hack.organizer}</span>
+                     <h3 className="text-3xl md:text-4xl font-black text-earth-text uppercase tracking-tight mb-6 group-hover:text-earth-accent transition-colors leading-tight">{hack.name}</h3>
                      
                      <div className="flex flex-wrap gap-2 mt-4">
                         {hack.tech.map(t => (
-                          <span key={t} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono uppercase text-white/60">
+                          <span key={t} className="px-3 py-1 rounded-full bg-white/60 border border-earth-border text-[10px] font-mono uppercase text-earth-text/60">
                              {t}
                           </span>
                         ))}
@@ -89,27 +89,27 @@ const Hackathons = () => {
                   <div className="lg:col-span-8 flex flex-col gap-8">
                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
-                           <div className="flex items-center gap-2 mb-3 text-neon-purple">
+                           <div className="flex items-center gap-2 mb-3 text-earth-secondary">
                               <Target size={16} />
                               <span className="text-[10px] font-mono uppercase tracking-widest font-black">The Challenge</span>
                            </div>
-                           <p className="text-white/70 text-sm leading-relaxed">{hack.challenge}</p>
+                           <p className="text-earth-text/70 text-sm leading-relaxed">{hack.challenge}</p>
                         </div>
                         <div>
-                           <div className="flex items-center gap-2 mb-3 text-neon-blue">
+                           <div className="flex items-center gap-2 mb-3 text-earth-accent">
                               <Terminal size={16} />
                               <span className="text-[10px] font-mono uppercase tracking-widest font-black">The Strategy</span>
                            </div>
-                           <p className="text-white/70 text-sm leading-relaxed">{hack.strategy}</p>
+                           <p className="text-earth-text/70 text-sm leading-relaxed">{hack.strategy}</p>
                         </div>
                      </div>
 
-                     <div className="mt-4 p-6 rounded-2xl bg-white/5 border border-white/10 relative group-hover:bg-white/10 transition-colors">
+                     <div className="mt-4 p-6 rounded-2xl bg-white/60 border border-earth-border relative group-hover:bg-white/70 transition-colors">
                         <div className="flex items-center gap-2 mb-3 text-green-400">
                            <Award size={16} />
                            <span className="text-[10px] font-mono uppercase tracking-widest font-black">Mission Result</span>
                         </div>
-                        <p className="text-white font-bold text-lg md:text-xl">{hack.outcome}</p>
+                        <p className="text-earth-text font-bold text-lg md:text-xl">{hack.outcome}</p>
                      </div>
                   </div>
 
