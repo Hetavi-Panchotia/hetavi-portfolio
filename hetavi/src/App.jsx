@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import CustomCursor from './components/CustomCursor';
+import SEO from './components/SEO';
 import Background from './components/Background';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -29,6 +30,7 @@ function App() {
   return (
     <div className="relative min-h-screen selection:bg-neon-purple/30 selection:text-white dark">
       <CustomCursor />
+      <SEO />
       <Background />
       
       <div className="relative z-10 font-sans">

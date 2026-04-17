@@ -4,7 +4,7 @@ import { Code2, Trophy, Rocket, Briefcase, FolderGit2 } from 'lucide-react';
 import Lottie from 'lottie-react';
 import { FaReact, FaNodeJs, FaGitAlt } from 'react-icons/fa';
 import { SiMongodb, SiTailwindcss } from 'react-icons/si';
-import { Helmet } from 'react-helmet';
+
 
 const About = () => {
   const [lottieData, setLottieData] = React.useState(null);
@@ -59,12 +59,7 @@ const About = () => {
 
   return (
     <section id="about" className="py-24 relative overflow-hidden bg-dark-bg">
-      <Helmet>
-        <title>About - Hetavi Panchotia</title>
-        <meta name="description" content="Aspiring Software Developer passionate about building interactive user interfaces and scalable architectures." />
-        <meta name="keywords" content="Hetavi Panchotia, About, Aspiring Software Developer, Full-Stack Development, Interactive User Interfaces, Scalable Architectures, Hackathons, Algorithmic Problems, Software Solutions" />
-        <meta name="author" content="Hetavi Panchotia" />
-      </Helmet>
+
       {/* Background Parallax / Particles (subtle) */}
       <div className="absolute inset-0 pointer-events-none opacity-30 z-0">
         <motion.div 

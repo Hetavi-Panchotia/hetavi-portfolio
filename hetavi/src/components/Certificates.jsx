@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Award, ExternalLink, ChevronLeft, ChevronRight, X, Maximize2 } from 'lucide-react';
-import { Helmet } from 'react-helmet';
+
 
 const certificates = [
   {
@@ -117,12 +117,7 @@ const Certificates = () => {
   return (
     <section id="certificates" className="py-32 relative overflow-hidden bg-dark-bg min-h-screen flex flex-col justify-center">
       
-      <Helmet>
-        <title>Certificates - Hetavi Panchotia</title>
-        <meta name="description" content="Certificates of Hetavi Panchotia - Achievements" />
-        <meta name="keywords" content="Hetavi Panchotia, Certificates, Aspiring Software Developer, Full-Stack Development, Interactive User Interfaces, Scalable Architectures, Hackathons, Algorithmic Problems, Software Solutions" />
-        <meta name="author" content="Hetavi Panchotia" />
-      </Helmet>
+
 
       {/* Background Ambience */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
