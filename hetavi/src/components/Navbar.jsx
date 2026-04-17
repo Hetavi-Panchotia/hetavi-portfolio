@@ -10,6 +10,7 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState('hero');
   const location = useLocation();
 
+  // Handle Navbar Background
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -19,16 +20,45 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const sectionId = location.pathname === '/' ? 'hero' : location.pathname.substring(1);
-    setActiveSection(sectionId);
-  }, [location.pathname]);
+    const sectionIds = ['hero', 'about', 'skills', 'projects', 'designs', 'certificates', 'hackathons', 'achievements', 'education', 'contact'];
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0% -70% 0%', // Trigger when section is in the top/middle area
+      threshold: 0
+    };
+
+    const handleIntersect = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersect, observerOptions);
+
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => {
+      sectionIds.forEach((id) => {
+        const element = document.getElementById(id);
+        if (element) observer.unobserve(element);
+      });
+    };
+  }, []);
 
   const navLinks = [
     { name: 'About', to: '/about' },
     { name: 'Skills', to: '/skills' },
     { name: 'Projects', to: '/projects' },
+    { name: 'Designs', to: '/designs' },
     { name: 'Certificates', to: '/certificates' },
     { name: 'Hackathons', to: '/hackathons' },
+    { name: 'Achievements', to: '/achievements' },
     { name: 'Education', to: '/education' },
     { name: 'Contact', to: '/contact' },
   ];

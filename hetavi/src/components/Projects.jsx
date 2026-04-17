@@ -58,6 +58,17 @@ const projects = [
     github: "https://github.com/Hetavi-Panchotia/Life-of-a-Developer",
     youtube: "https://youtube.com/",
     categories: ["Games", "Frontend"]
+  },
+  {
+    id:7,
+    title: "RepoLens",
+    description : "RepoLens is an AI-powered tool that helps developers quickly understand any GitHub repository by automatically generating summaries, documentation, folder explanations, and architecture insights.",
+    tech: ["Express", "React", "Node.js", "Tailwind", "Supabase", "Gemini API" , "Github API"],
+    image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1776426135/Screenshot_2026-04-17_171202_ymxhl4.png",
+    live: "https://repolens-olive.vercel.app/",
+    github: "https://github.com/Hetavi-Panchotia/RepoLens",
+    youtube: "",
+    categories: ["Full Stack"]
   }
 ];
 
@@ -170,9 +181,9 @@ const Projects = () => {
             <span className="text-neon-blue drop-shadow-[0_0_15px_rgba(0,240,255,0.5)]">Projects</span>
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-neon-purple via-neon-blue to-neon-purple mx-auto rounded-full blur-[1px]" />
-          <p className="mt-4 text-white/50 text-sm md:text-base max-w-lg mx-auto">
+          {/* <p className="mt-4 text-white/50 text-sm md:text-base max-w-lg mx-auto">
             A curated collection of my most impactful dev work and applications, categorized by domain.
-          </p>
+          </p> */}
         </motion.div>
 
         {/* Category Tabs Header */}

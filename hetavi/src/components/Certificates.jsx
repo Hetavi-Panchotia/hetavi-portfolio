@@ -52,6 +52,14 @@ const certificates = [
     date : "2025",
     link : "https://res.cloudinary.com/dob3ay5xe/image/upload/v1770455611/Screenshot_2026-02-07_144317_uw152p.png",
     image : "https://res.cloudinary.com/dob3ay5xe/image/upload/v1770455611/Screenshot_2026-02-07_144317_uw152p.png"
+  },
+  {
+    id : 7,
+    title : "Frontend Odyssey",
+    issuer : "IIT Patna",
+    date : "2026",
+    link : "https://res.cloudinary.com/dob3ay5xe/image/upload/v1776426058/Screenshot_2026-04-16_151131_akgqgv.png",
+    image : "https://res.cloudinary.com/dob3ay5xe/image/upload/v1776426058/Screenshot_2026-04-16_151131_akgqgv.png"
   }
 ];
 
@@ -150,9 +158,9 @@ const Certificates = () => {
             <span className="text-neon-purple drop-shadow-[0_0_15px_rgba(138,43,226,0.5)]">Awards</span>
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-blue mx-auto rounded-full blur-[1px]" />
-          <p className="mt-4 text-white/50 text-sm md:text-base max-w-lg mx-auto">
+          {/* <p className="mt-4 text-white/50 text-sm md:text-base max-w-lg mx-auto">
             A curated collection of my professional achievements, hackathon victories, and technical certifications.
-          </p>
+          </p> */}
         </motion.div>
 
         {/* 3D Carousel Container */}

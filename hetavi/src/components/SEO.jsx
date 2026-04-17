@@ -46,6 +46,21 @@ const SEO = () => {
       description: 'Contact Hetavi Panchotia for collaborations, inquiries, or just to say hello. Let\'s build something amazing together!',
       keywords: 'Contact Hetavi Panchotia, Hire Developer, Software Engineer contact, collaboration, Get in touch',
     },
+    '/designs': {
+      title: 'Figma Designs | Hetavi Panchotia',
+      description: 'Explore the creative UI/UX designs, prototypes, and visual experiments crafted by Hetavi Panchotia.',
+      keywords: 'Hetavi Panchotia designs, Figma gallery, UI/UX design, web design, app design, prototypes',
+    },
+    '/hackathons': {
+      title: 'Hackathon Journey | Hetavi Panchotia',
+      description: 'Tactical experience logged across multiple high-stakes development arenas and hackathons.',
+      keywords: 'Hackathons, Hetavi Panchotia, coding competitions, hackathon projects, competitive programming',
+    },
+    '/achievements': {
+      title: 'Key Achievements | Hetavi Panchotia',
+      description: 'Professional milestones, academic excellence, and technical accolades earned by Hetavi Panchotia.',
+      keywords: 'Hetavi Panchotia achievements, awards, milestones, honors, credentials',
+    },
   };
 
   const currentSEO = seoData[pathname] || seoData['/'];

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Trophy, Rocket, Briefcase, FolderGit2 } from 'lucide-react';
 import Lottie from 'lottie-react';
@@ -7,9 +7,9 @@ import { SiMongodb, SiTailwindcss } from 'react-icons/si';
 
 
 const About = () => {
-  const [lottieData, setLottieData] = React.useState(null);
+  const [lottieData, setLottieData] = useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     // Primary premium developer animation
     fetch('https://assets3.lottiefiles.com/packages/lf20_w51pcehl.json')
       .then(res => res.json())
@@ -107,7 +107,11 @@ const About = () => {
                 </h3>
                 
                 <p className="text-white/80 leading-relaxed text-lg">
-                  My journey began with writing simple scripts, but quickly evolved into a passion for <span className="text-neon-purple font-semibold hover:text-neon-blue transition-colors cursor-default">Full-Stack Development</span>, interactive user interfaces, and scalable architectures. I thrive in dynamic environments where I can push my limits.
+                  My journey began with a curiosity for how the digital world works, writing simple scripts that eventually evolved into a deep passion for <span className="text-neon-purple font-semibold hover:text-neon-blue transition-colors cursor-default">Full-Stack Development</span>. I specialize in building interactive user interfaces and scalable architectures that bridge the gap between complex backend logic and high-end visual design.
+                </p>
+                
+                <p className="text-white/70 leading-relaxed text-base">
+                  Currently pursuing my degree, I have dedicated my time to mastering modern frameworks and participating in high-stakes development arenas. I thrive in collaborative, fast-paced environments where I can leverage my problem-solving skills to turn innovative ideas into spectacular real-world applications.
                 </p>
                 
                 <ul className="space-y-4 mt-2 text-white/70">

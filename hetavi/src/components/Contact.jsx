@@ -1,3 +1,5 @@
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, MapPin, Send, CheckCircle2, Github, Linkedin, Twitter, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
@@ -67,7 +69,7 @@ const ContactInput = ({ label, type = "text", placeholder, name, isTextArea = fa
 };
 
 const Contact = () => {
-  const formRef = React.useRef();
+  const formRef = useRef();
   const [formState, setFormState] = useState('idle'); // idle, sending, success, error
   const [errorMessage, setErrorMessage] = useState('');
 
