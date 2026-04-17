@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Trophy, Rocket, Briefcase, FolderGit2 } from 'lucide-react';
+import { Code2, Trophy, Rocket, Briefcase, FolderGit2, User } from 'lucide-react';
 import Lottie from 'lottie-react';
 import { FaReact, FaNodeJs, FaGitAlt } from 'react-icons/fa';
 import { SiMongodb, SiTailwindcss } from 'react-icons/si';
-
+import SectionHeading from './SectionHeading';
 
 const About = () => {
   const [lottieData, setLottieData] = useState(null);
@@ -84,19 +84,13 @@ const About = () => {
           {/* Left Column: Text Content */}
           <div className="lg:col-span-7 flex flex-col gap-8 order-2 lg:order-1">
             
-            <motion.div variants={itemVariants} className="flex flex-col gap-2">
-              <h2 className="text-4xl md:text-5xl font-heading font-bold text-earth-text relative inline-block w-fit">
-                About Me
-              </h2>
-              {/* Animated Divider line */}
-              <motion.div 
-                initial={{ width: 0 }}
-                whileInView={{ width: "80px" }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                className="h-1.5 bg-gradient-to-r from-earth-accent to-earth-secondary rounded-full"
-              />
-            </motion.div>
+            <SectionHeading 
+              icon={User} 
+              subtitle="My Identity" 
+              title1="Behind the" 
+              title2="Code" 
+              alignment="left" 
+            />
 
             <motion.div variants={itemVariants} className="glass-warm p-8 rounded-3xl border border-white/5 relative overflow-hidden group hover:border-earth-border transition-all duration-500 shadow-xl">
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

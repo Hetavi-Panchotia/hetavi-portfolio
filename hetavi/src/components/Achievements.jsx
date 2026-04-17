@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Trophy, Star, Target, TrendingUp, Cpu, Award } from 'lucide-react';
+import SectionHeading from './SectionHeading';
 
 const achievements = [
   {
@@ -51,26 +52,12 @@ const Achievements = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full flex flex-col items-center">
         
-        {/* Harmonized Centered Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center mb-16 md:mb-24"
-        >
-          <div className="flex justify-center items-center gap-3 mb-4">
-             <Star className="text-yellow-400 animate-spin-slow" size={24} />
-             <span className="text-sm uppercase tracking-[0.4em] text-earth-text/40 font-bold">Milestones</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-heading font-black text-earth-text uppercase tracking-tighter leading-none text-shadow-glow">
-            Key <span className="text-earth-secondary drop-shadow-[0_0_15px_rgba(163, 142, 117,0.5)]">Achievements</span>
-          </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-earth-accent via-earth-secondary to-earth-accent mx-auto mt-6 rounded-full blur-[1px]" />
-          {/* <p className="mt-6 text-earth-text/50 text-sm md:text-base max-w-lg mx-auto leading-relaxed">
-            Professional milestones, academic excellence, and technical accolades earned along my journey.
-          </p> */}
-        </motion.div>
+        <SectionHeading 
+          icon={Star} 
+          subtitle="Milestones" 
+          title1="Key" 
+          title2="Achievements" 
+        />
 
         {/* Harmonized Regular Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">

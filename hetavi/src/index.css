@@ -8,7 +8,7 @@
   --color-earth-secondary: #A38E75;
   --color-earth-card: #FFFFFF;
   --color-earth-border: #E5E0D8;
-  
+
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-heading: 'Outfit', system-ui, -apple-system, sans-serif;
 }
@@ -18,12 +18,12 @@
     --bg-color: #FDFBF7;
     --text-color: #2D2D2D;
   }
-  
+
   .dark {
     --bg-color: #FDFBF7;
     --text-color: #2D2D2D;
   }
-  
+
   body {
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -31,21 +31,21 @@
     overflow-x: hidden;
     scroll-behavior: smooth;
   }
-  
+
   /* Custom Scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   ::-webkit-scrollbar-track {
     background: transparent;
   }
-  
+
   ::-webkit-scrollbar-thumb {
     background: #E5E0D8;
     border-radius: 4px;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
     background: #A38E75;
   }
@@ -55,11 +55,11 @@
   .glass-warm {
     @apply bg-white/70 backdrop-blur-md border border-earth-border shadow-sm;
   }
-  
+
   .text-gradient-warm {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-earth-text to-earth-accent;
   }
-  
+
   .soft-shadow {
     filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.05));
   }

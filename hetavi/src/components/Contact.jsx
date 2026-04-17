@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, MapPin, Send, CheckCircle2, Github, Linkedin, Twitter, AlertCircle } from 'lucide-react';
+import { Mail, MapPin, Send, CheckCircle2, Github, Linkedin, Twitter, AlertCircle, Loader2, MessageSquare } from 'lucide-react';
+import SectionHeading from './SectionHeading';
 import emailjs from '@emailjs/browser';
 
 const ContactInput = ({ label, type = "text", placeholder, name, isTextArea = false }) => {
@@ -140,10 +141,13 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-             <h2 className="text-4xl md:text-6xl lg:text-7xl font-heading font-black mb-8 uppercase tracking-tight leading-none text-shadow-glow">
-              <span className="text-earth-text">Let's </span>
-              <span className="text-earth-accent drop-shadow-[0_0_15px_rgba(106, 123, 78,0.5)] block">Collaborate</span>
-            </h2>
+             <SectionHeading 
+              icon={Mail} 
+              subtitle="Connect" 
+              title1="Let's" 
+              title2="Collaborate" 
+              alignment="left"
+            />
             
             <p className="text-lg md:text-xl text-earth-text/60 mb-12 max-w-lg leading-relaxed font-light">
               Always open to discussing game-changing ideas, innovative designs, or full-stack possibilities.
@@ -151,7 +155,7 @@ const Contact = () => {
 
             <div className="space-y-8 mb-12">
               <motion.div whileHover={{ x: 10 }} className="flex items-center gap-5 group">
-                <div className="w-16 h-16 rounded-2xl bg-white/60 border border-earth-border flex items-center justify-center text-earth-accent group-hover:scale-110 transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.3)] group-hover:shadow-[0_0_30px_rgba(106, 123, 78,0.2)]">
+                <div className="w-16 h-16 rounded-2xl bg-white/60 border border-earth-border flex items-center justify-center text-earth-accent group-hover:scale-110 transition-all duration-300 shadow-[0_0_20px_rgba(45, 45, 45,0.3)] group-hover:shadow-[0_0_30px_rgba(106, 123, 78,0.2)]">
                   <Mail size={28} />
                 </div>
                 <div>
@@ -161,7 +165,7 @@ const Contact = () => {
               </motion.div>
               
               <motion.div whileHover={{ x: 10 }} className="flex items-center gap-5 group">
-                <div className="w-16 h-16 rounded-2xl bg-white/60 border border-earth-border flex items-center justify-center text-earth-secondary group-hover:scale-110 transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.3)] group-hover:shadow-[0_0_30px_rgba(163, 142, 117,0.2)]">
+                <div className="w-16 h-16 rounded-2xl bg-white/60 border border-earth-border flex items-center justify-center text-earth-secondary group-hover:scale-110 transition-all duration-300 shadow-[0_0_20px_rgba(45, 45, 45,0.3)] group-hover:shadow-[0_0_30px_rgba(163, 142, 117,0.2)]">
                   <MapPin size={28} />
                 </div>
                 <div>
@@ -200,7 +204,7 @@ const Contact = () => {
             {/* Background blur decorative element */}
             <div className="absolute -top-20 -right-20 w-64 h-64 bg-earth-accent filter blur-[100px] opacity-10 animate-pulse" />
             
-            <div className="glass-warm p-8 md:p-12 rounded-[2.5rem] border border-earth-border relative overflow-hidden backdrop-blur-2xl shadow-[0_40px_80px_rgba(0,0,0,0.5)]">
+            <div className="glass-warm p-8 md:p-12 rounded-[2.5rem] border border-earth-border relative overflow-hidden backdrop-blur-2xl shadow-[0_40px_80px_rgba(45, 45, 45,0.5)]">
                <form ref={formRef} className="space-y-8 relative z-10" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <ContactInput label="Full Name" name="name" />

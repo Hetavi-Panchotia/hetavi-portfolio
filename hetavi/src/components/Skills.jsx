@@ -4,6 +4,7 @@ import { FaReact, FaHtml5, FaCss3Alt, FaNodeJs, FaGitAlt, FaGithub, FaPython } f
 import { SiJavascript, SiTailwindcss, SiExpress, SiMongodb, SiMysql, SiPostman, SiC, SiCplusplus } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
 import { X, Layers, Code2, Box } from 'lucide-react';
+import SectionHeading from './SectionHeading';
 
 const skillsData = [
   { id: 'react', name: 'React', category: 'Frontend', level: 'Advanced', desc: 'Component-based UI architecture, state management & hooks.', projects: ['Interactive Portfolios', 'E-Commerce Platforms'], icon: FaReact, color: '#61DAFB' },
@@ -130,23 +131,12 @@ export default function Skills() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 w-full flex flex-col items-center">
         
-        {/* Dynamic Header */}
-        <div className="flex flex-col items-center justify-center mb-12 overflow-hidden">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-3 mb-4 px-4 py-2 rounded-full bg-white/60 border border-earth-border backdrop-blur-md"
-          >
-            <Layers className="text-earth-accent" size={20} />
-            <span className="text-sm uppercase tracking-widest text-earth-text/70 font-semibold">My Arsenal</span>
-          </motion.div>
-          
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-center">
-            <span className="text-earth-text">Technical </span>
-            <span className="text-gradient-warm">Capabilities</span>
-          </h2>
-        </div>
+        <SectionHeading 
+          icon={Layers} 
+          subtitle="My Arsenal" 
+          title1="Technical" 
+          title2="Capabilities" 
+        />
 
         {/* Filter Tabs Header */}
         <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 mb-16 relative z-20">
@@ -203,7 +193,7 @@ export default function Skills() {
             <motion.div
               layoutId={`card-${selectedSkill.id}`}
               className="relative w-[90%] max-w-md bg-earth-bg/95 backdrop-blur-2xl rounded-[2rem] p-8 mt-10 md:mt-0 border flex flex-col items-center overflow-hidden shadow-2xl cursor-default"
-              style={{ borderColor: selectedSkill.color + "50", boxShadow: `0 30px 60px rgba(0,0,0,0.8), 0 0 40px ${selectedSkill.color}20 inset` }}
+              style={{ borderColor: selectedSkill.color + "50", boxShadow: `0 30px 60px rgba(45, 45, 45,0.8), 0 0 40px ${selectedSkill.color}20 inset` }}
               transition={{ type: "tween", ease: "easeInOut" }}
             >
               {/* Modal Background Glow */}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Award, ExternalLink, ChevronLeft, ChevronRight, X, Maximize2 } from 'lucide-react';
 import useWindowSize from '../hooks/useWindowSize';
+import SectionHeading from './SectionHeading';
 
 
 const certificates = [
@@ -145,23 +146,12 @@ const Certificates = () => {
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10 w-full flex flex-col items-center">
         
-        {/* Section Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center mb-16 md:mb-24"
-        >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black mb-4 uppercase tracking-widest text-shadow-glow">
-            <span className="text-earth-text">Featured </span>
-            <span className="text-earth-secondary drop-shadow-[0_0_15px_rgba(163, 142, 117,0.5)]">Awards</span>
-          </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-earth-accent via-earth-secondary to-earth-accent mx-auto rounded-full blur-[1px]" />
-          {/* <p className="mt-4 text-earth-text/50 text-sm md:text-base max-w-lg mx-auto">
-            A curated collection of my professional achievements, hackathon victories, and technical certifications.
-          </p> */}
-        </motion.div>
+        <SectionHeading 
+          icon={Award} 
+          subtitle="Milestones" 
+          title1="Verified" 
+          title2="Certifications" 
+        />
 
         {/* 3D Carousel Container */}
         <div 
@@ -173,14 +163,14 @@ const Certificates = () => {
           {/* Navigation Arrows (Desktop) */}
           <button 
             onClick={prevSlide}
-            className="absolute left-2 md:left-10 z-50 p-4 rounded-full bg-white/60 hover:bg-white/70 border border-earth-border backdrop-blur-md text-earth-text/70 hover:text-earth-text transition-all hover:scale-110 shadow-[0_0_20px_rgba(0,0,0,0.5)] hidden md:flex"
+            className="absolute left-2 md:left-10 z-50 p-4 rounded-full bg-white/60 hover:bg-white/70 border border-earth-border backdrop-blur-md text-earth-text/70 hover:text-earth-text transition-all hover:scale-110 shadow-[0_0_20px_rgba(45, 45, 45,0.5)] hidden md:flex"
           >
             <ChevronLeft size={28} />
           </button>
           
           <button 
             onClick={nextSlide}
-            className="absolute right-2 md:right-10 z-50 p-4 rounded-full bg-white/60 hover:bg-white/70 border border-earth-border backdrop-blur-md text-earth-text/70 hover:text-earth-text transition-all hover:scale-110 shadow-[0_0_20px_rgba(0,0,0,0.5)] hidden md:flex"
+            className="absolute right-2 md:right-10 z-50 p-4 rounded-full bg-white/60 hover:bg-white/70 border border-earth-border backdrop-blur-md text-earth-text/70 hover:text-earth-text transition-all hover:scale-110 shadow-[0_0_20px_rgba(45, 45, 45,0.5)] hidden md:flex"
           >
             <ChevronRight size={28} />
           </button>
@@ -202,7 +192,7 @@ const Certificates = () => {
                 style={{
                   borderColor: isActive ? "rgba(163, 142, 117,0.6)" : "rgba(45, 45, 45,0.05)",
                   backgroundColor: isActive ? "rgba(20,20,30,0.9)" : "rgba(10,10,15,0.5)",
-                  boxShadow: isActive ? "0 30px 60px rgba(0,0,0,0.8), inset 0 0 40px rgba(163, 142, 117,0.2)" : "0 10px 30px rgba(0,0,0,0.6)",
+                  boxShadow: isActive ? "0 30px 60px rgba(45, 45, 45,0.8), inset 0 0 40px rgba(163, 142, 117,0.2)" : "0 10px 30px rgba(45, 45, 45,0.6)",
                   transformStyle: "preserve-3d"
                 }}
                 onClick={() => {
@@ -297,7 +287,7 @@ const Certificates = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "tween", ease: "easeInOut" }}
-              className="relative w-full max-w-4xl bg-earth-bg/90 border border-earth-border rounded-[2rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,1)] z-10 flex flex-col max-h-[90vh]"
+              className="relative w-full max-w-4xl bg-earth-bg/90 border border-earth-border rounded-[2rem] overflow-hidden shadow-[0_0_100px_rgba(45, 45, 45,1)] z-10 flex flex-col max-h-[90vh]"
               onClick={(e) => e.stopPropagation()}
             >
               

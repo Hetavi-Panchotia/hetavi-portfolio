@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { GraduationCap, Calendar, MapPin, School } from 'lucide-react';
+import SectionHeading from './SectionHeading';
 
 const education = [
   {
@@ -47,7 +48,7 @@ const EducationCard = ({ item, index, isEven }) => {
           whileHover={{ y: -5, scale: 1.02 }}
           className="glass-warm p-8 rounded-[2rem] border border-white/5 hover:border-earth-secondary/30 transition-all duration-500 overflow-hidden relative group"
           style={{
-            boxShadow: "0 20px 40px rgba(0,0,0,0.4)"
+            boxShadow: "0 20px 40px rgba(45, 45, 45,0.4)"
           }}
         >
           {/* Subtle inner glow on hover */}
@@ -121,22 +122,12 @@ const Education = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-24"
-        >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black mb-4 uppercase tracking-widest text-shadow-glow">
-            <span className="text-earth-text">Academic </span>
-            <span className="text-earth-secondary drop-shadow-[0_0_15px_rgba(163, 142, 117,0.5)]">Journey</span>
-          </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-earth-accent via-earth-secondary to-earth-accent mx-auto rounded-full blur-[1px]" />
-          <p className="mt-4 text-earth-text/50 text-sm md:text-base max-w-lg mx-auto">
-            My educational background and the milestones that shaped my technical foundation.
-          </p>
-        </motion.div>
+        <SectionHeading 
+          icon={GraduationCap} 
+          subtitle="Academic" 
+          title1="Education &" 
+          title2="Background" 
+        />
 
         <div className="relative max-w-5xl mx-auto">
           

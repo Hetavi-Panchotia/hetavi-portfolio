@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Rocket, Target, Award, Cpu, Terminal, Trophy } from 'lucide-react';
+import SectionHeading from './SectionHeading';
 
 const hackathonData = [
   {
@@ -37,25 +38,12 @@ const Hackathons = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
         
         {/* Harmonized Centered Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center mb-16 md:mb-24"
-        >
-          <div className="flex justify-center items-center gap-3 mb-4">
-             <Rocket className="text-earth-accent animate-bounce" size={24} />
-             <span className="text-sm uppercase tracking-[0.4em] text-earth-text/40 font-bold">The Archives</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-heading font-black text-earth-text uppercase tracking-tighter leading-none text-shadow-glow">
-            Hackathon <span className="text-earth-accent drop-shadow-[0_0_15px_rgba(106, 123, 78,0.5)]">Journey</span>
-          </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-earth-secondary via-earth-accent to-earth-secondary mx-auto mt-6 rounded-full blur-[1px]" />
-          {/* <p className="mt-6 text-earth-text/50 text-sm md:text-base max-w-lg mx-auto leading-relaxed">
-            Tactical experience logged across multiple high-stakes development arenas. Problem-solving under pressure.
-          </p> */}
-        </motion.div>
+        <SectionHeading 
+          icon={Rocket} 
+          subtitle="The Archives" 
+          title1="Hackathon" 
+          title2="Journey" 
+        />
 
         {/* Vertical Stack of Mission Cards */}
         <div className="space-y-12 md:space-y-20 max-w-5xl mx-auto">
@@ -68,7 +56,7 @@ const Hackathons = () => {
               transition={{ duration: 0.8, delay: idx * 0.1 }}
               className="group relative"
             >
-              <div className="glass-warm p-8 md:p-12 rounded-[2.5rem] border border-white/5 bg-white/60 backdrop-blur-3xl overflow-hidden transition-all duration-500 hover:border-earth-border hover:bg-white/70 group-hover:shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+              <div className="glass-warm p-8 md:p-12 rounded-[2.5rem] border border-white/5 bg-white/60 backdrop-blur-3xl overflow-hidden transition-all duration-500 hover:border-earth-border hover:bg-white/70 group-hover:shadow-[0_0_50px_rgba(45, 45, 45,0.5)]">
                 
                 <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl ${hack.color} opacity-0 group-hover:opacity-10 transition-opacity duration-1000 blur-3xl`} />
                 
