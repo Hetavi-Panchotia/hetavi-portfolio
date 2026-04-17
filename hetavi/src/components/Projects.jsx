@@ -232,11 +232,11 @@ const Projects = () => {
                 onDragEnd={handleDragEnd}
                 animate={getCardStyles(index)}
                 transition={{ type: "tween", ease: "easeInOut" }}
-                className="absolute w-[80%] max-w-[320px] md:max-w-[450px] rounded-[2rem] glass-warm p-1 cursor-grab active:cursor-grabbing border transition-colors duration-500"
+                className="absolute w-[80%] max-w-[320px] md:max-w-[450px] rounded-[2.5rem] glass-warm p-1 cursor-grab active:cursor-grabbing border transition-all duration-500"
                 style={{
-                  borderColor: isActive ? "rgba(106, 123, 78,0.4)" : "rgba(45, 45, 45,0.05)",
-                  backgroundColor: isActive ? "rgba(20,20,30,0.9)" : "rgba(10,10,15,0.5)",
-                  boxShadow: isActive ? "0 30px 60px rgba(45, 45, 45,0.8), inset 0 0 40px rgba(106, 123, 78,0.15)" : "0 10px 30px rgba(45, 45, 45,0.6)",
+                  borderColor: isActive ? "rgba(106, 123, 78, 0.3)" : "rgba(0, 0, 0, 0.05)",
+                  backgroundColor: isActive ? "rgba(255, 255, 255, 0.8)" : "rgba(255, 255, 255, 0.5)",
+                  boxShadow: isActive ? "0 30px 60px rgba(45, 45, 45, 0.15), inset 0 0 40px rgba(106, 123, 78, 0.05)" : "0 10px 30px rgba(45, 45, 45, 0.1)",
                   transformStyle: "preserve-3d"
                 }}
                 onClick={() => {

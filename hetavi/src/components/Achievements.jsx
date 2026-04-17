@@ -68,7 +68,7 @@ const Achievements = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="group relative p-10 rounded-[2rem] border border-white/5 bg-white/60 backdrop-blur-3xl overflow-hidden transition-all duration-500 hover:border-earth-border hover:bg-white/70 flex flex-col h-full"
+              className="group relative p-8 md:p-12 rounded-[2.5rem] glass-warm backdrop-blur-3xl transition-all duration-500 card-hover flex flex-col h-full"
             >
               {/* Corner Glow */}
               <div className={`absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br ${item.gradient} filter blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />

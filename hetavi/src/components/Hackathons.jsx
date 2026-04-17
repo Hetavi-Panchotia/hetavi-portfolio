@@ -56,7 +56,7 @@ const Hackathons = () => {
               transition={{ duration: 0.8, delay: idx * 0.1 }}
               className="group relative"
             >
-              <div className="glass-warm p-8 md:p-12 rounded-[2.5rem] border border-white/5 bg-white/60 backdrop-blur-3xl overflow-hidden transition-all duration-500 hover:border-earth-border hover:bg-white/70 group-hover:shadow-[0_0_50px_rgba(45, 45, 45,0.5)]">
+              <div className="glass-warm p-8 md:p-12 rounded-[2.5rem] transition-all duration-500 card-hover overflow-hidden">
                 
                 <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl ${hack.color} opacity-0 group-hover:opacity-10 transition-opacity duration-1000 blur-3xl`} />
                 

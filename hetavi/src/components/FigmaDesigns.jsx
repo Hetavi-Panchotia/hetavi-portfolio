@@ -64,9 +64,10 @@ const FigmaDesigns = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="group relative"
+              className="group relative cursor-pointer"
+              onClick={() => setSelectedDesign(design)}
             >
-              <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/5 bg-white/60 backdrop-blur-3xl transition-all duration-500 group-hover:border-earth-secondary/50 shadow-2xl">
+              <div className="relative aspect-[4/5] rounded-[2.5rem] glass-warm backdrop-blur-3xl transition-all duration-500 card-hover overflow-hidden">
                 
                 {/* Image */}
                 <img 
@@ -82,12 +83,11 @@ const FigmaDesigns = () => {
                   
                   <div className="flex gap-4">
                     <motion.button 
-                      onClick={() => setSelectedDesign(design)}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full py-4 rounded-xl bg-white/70 hover:bg-white/20 border border-earth-border flex items-center justify-center gap-3 text-earth-text font-bold uppercase tracking-widest text-xs"
+                      className="w-full py-4 rounded-xl bg-white/70 hover:bg-white/20 border border-earth-border flex items-center justify-center gap-3 text-earth-text font-bold uppercase tracking-widest text-[10px]"
                     >
-                      <Maximize2 size={16} /> View Image
+                      <Maximize2 size={16} /> Open Design
                     </motion.button>
                   </div>
                 </div>
@@ -126,6 +126,14 @@ const FigmaDesigns = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-8 md:p-12">
                    <h2 className="text-4xl md:text-6xl font-black text-earth-text uppercase tracking-tighter mb-4">{selectedDesign.title}</h2>
                    <div className="flex flex-wrap gap-4 items-center">
+                      <a 
+                        href={selectedDesign.image}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 bg-earth-secondary/20 hover:bg-earth-secondary/30 border border-earth-secondary/50 text-earth-text px-6 py-3 rounded-full font-semibold transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
+                      >
+                        Open <ExternalLink size={18} />
+                      </a>
                       <button onClick={() => setSelectedDesign(null)} className="text-earth-text/60 hover:text-earth-text uppercase font-mono tracking-widest text-xs">
                         [ Close ]
                       </button>
