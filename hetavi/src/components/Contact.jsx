@@ -31,6 +31,8 @@ const ContactInput = ({ label, type = "text", placeholder, name, isTextArea = fa
       
       {isTextArea ? (
         <textarea
+          name={name}
+          required
           rows="4"
           onFocus={() => setIsFocused(true)}
           onBlur={handleBlur}
@@ -39,6 +41,8 @@ const ContactInput = ({ label, type = "text", placeholder, name, isTextArea = fa
         />
       ) : (
         <input
+          name={name}
+          required
           type={type}
           onFocus={() => setIsFocused(true)}
           onBlur={handleBlur}
@@ -76,7 +80,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    if (SERVICE_ID === "YOUR_SERVICE_ID") {
+    if (SERVICE_ID === "YOUR_SERVICE_ID" || SERVICE_ID === "") {
       setErrorMessage("Please configure EmailJS credentials in Contact.jsx");
       setFormState('error');
       setTimeout(() => setFormState('idle'), 5000);
@@ -102,7 +106,7 @@ const Contact = () => {
   const socialLinks = [
     { icon: <Github size={20} />, link: "https://github.com/Hetavi-Panchotia", color: "hover:text-white" },
     { icon: <Linkedin size={20} />, link: "https://www.linkedin.com/in/hetavi-panchotia/", color: "hover:text-neon-blue" },
-    { icon: <Twitter size={20} />, link: "https://twitter.com/hetavipanchotia", color: "hover:text-neon-purple" }
+    { icon: <Twitter size={20} />, link: "https://x.com/HPanchotia21633", color: "hover:text-neon-purple" }
   ];
 
   return (

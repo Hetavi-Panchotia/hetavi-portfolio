@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, ChevronLeft, ChevronRight, X, Maximize2, MonitorPlay, Youtube } from 'lucide-react';
+import { ExternalLink, Github, ChevronLeft, ChevronRight, X, Maximize2, MonitorPlay, Youtube, Filter } from 'lucide-react';
 import useWindowSize from '../hooks/useWindowSize';
 
 const projects = [
@@ -12,7 +12,8 @@ const projects = [
     image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774711968/Screenshot_2026-03-28_210214_bqy5bo.png",
     live: "https://ashby-clone.vercel.app/",
     github: "https://github.com/Hetavi-Panchotia/Ashby_Clone",
-    youtube: "https://youtu.be/YgyRL6WyFn0"
+    youtube: "https://youtu.be/YgyRL6WyFn0",
+    categories: ["Clones", "Frontend"]
   },
   {
     id: 2,
@@ -22,7 +23,8 @@ const projects = [
     image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774712045/Screenshot_2026-03-28_210349_v5asrh.png",
     live: "https://careertrack-flame.vercel.app/",
     github: "https://github.com/Hetavi-Panchotia/careertrack",
-    youtube: "https://youtube.com/"
+    youtube: "https://youtube.com/",
+    categories: ["Full Stack"]
   },
   {
     id: 3,
@@ -32,18 +34,9 @@ const projects = [
     image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774712197/Screenshot_2026-03-28_210447_z0yy8a.png",
     live: "https://path-pilot-cyan.vercel.app/",
     github: "https://github.com/Hetavi-Panchotia/Path-Pilot",
-    youtube: "https://youtube.com/"
+    youtube: "https://youtube.com/",
+    categories: ["Full Stack"]
   },
-  // {
-  //   id: 4,
-  //   title: "Movie Gallery",
-  //   description: "Movie Gallery is a web application designed to help users organize and manage their movie collections efficiently. The platform provides a centralized dashboard where users can track their movies.",
-  //   tech: ["React", "Redux Toolkit", "Tailwind CSS"],
-  //   image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774712199/Screenshot_2026-03-28_210537_aclnkc.png",
-  //   live: "https://movies-react-poject.netlify.app/https://movies-react-poject.netlify.app/",
-  //   github: "https://github.com/Hetavi-Panchotia/ReactTest-movie-",
-  //   youtube: "https://youtube.com/"
-  // },
   {
     id: 5,
     title: "Licious Clone",
@@ -52,7 +45,8 @@ const projects = [
     image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774712199/Screenshot_2026-03-28_210613_o1l3hv.png",
     live: "https://licious-clone-phi.vercel.app/",
     github: "https://github.com/Hetavi-Panchotia/Licious_Clone",
-    youtube: "https://youtu.be/P6_4IJ7R4hU"
+    youtube: "https://youtu.be/P6_4IJ7R4hU",
+    categories: ["Clones", "Frontend"]
   },
   {
     id: 6,
@@ -62,36 +56,53 @@ const projects = [
     image: "https://res.cloudinary.com/dob3ay5xe/image/upload/v1774600501/Screenshot_2026-03-27_135126_ysiqdt.png",
     live: "https://life-of-a-developer-chi.vercel.app/",
     github: "https://github.com/Hetavi-Panchotia/Life-of-a-Developer",
-    youtube: "https://youtube.com/"
+    youtube: "https://youtube.com/",
+    categories: ["Games", "Frontend"]
   }
 ];
 
 const Projects = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeCategory, setActiveCategory] = useState("All");
   const [isHovered, setIsHovered] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+  
+  const categories = ["All", "Games", "Clones", "Full Stack", "Frontend"];
+  
+  const filteredProjects = projects.filter(project => 
+    activeCategory === "All" || project.categories.includes(activeCategory)
+  );
+
   const { width } = useWindowSize();
   const isMobile = width < 768;
   const isSmallMobile = width < 480;
 
+  // Reset index when category changes
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [activeCategory]);
+
   // Auto-rotation logic
   useEffect(() => {
-    if (isHovered || selectedProject) return;
+    if (isHovered || selectedProject || filteredProjects.length <= 1) return;
     
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % projects.length);
-    }, 3000); // Rotates every 3 seconds
+      setActiveIndex((prev) => (prev + 1) % filteredProjects.length);
+    }, 4000); // Rotates every 4 seconds for better readability
     
     return () => clearInterval(interval);
-  }, [isHovered, selectedProject]);
+  }, [isHovered, selectedProject, filteredProjects.length]);
 
-  const nextSlide = () => setActiveIndex((prev) => (prev + 1) % projects.length);
-  const prevSlide = () => setActiveIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  const nextSlide = () => setActiveIndex((prev) => (prev + 1) % filteredProjects.length);
+  const prevSlide = () => setActiveIndex((prev) => (prev - 1 + filteredProjects.length) % filteredProjects.length);
 
   // Calculate position logic for 3D Carousel effect
   const getCardStyles = (index) => {
-    const total = projects.length;
+    const total = filteredProjects.length;
     let diff = index - activeIndex;
+
+    // Special case for only 1 item
+    if (total === 1) return { x: "0%", scale: 1, zIndex: 30, opacity: 1, rotateY: 0, filter: "blur(0px)" };
 
     // Handle wrap around smoothly
     if (diff > Math.floor(total / 2)) diff -= total;
@@ -160,9 +171,29 @@ const Projects = () => {
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-neon-purple via-neon-blue to-neon-purple mx-auto rounded-full blur-[1px]" />
           <p className="mt-4 text-white/50 text-sm md:text-base max-w-lg mx-auto">
-            A curated collection of my most impactful dev work and full-stack applications.
+            A curated collection of my most impactful dev work and applications, categorized by domain.
           </p>
         </motion.div>
+
+        {/* Category Tabs Header */}
+        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 mb-20 relative z-30">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`relative px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 ${activeCategory === cat ? 'text-white' : 'text-white/50 hover:text-white hover:bg-white/5'}`}
+            >
+              {activeCategory === cat && (
+                <motion.div
+                  layoutId="activeCategoryTabProjects"
+                  className="absolute inset-0 bg-white/10 border border-white/20 rounded-full backdrop-blur-md shadow-[0_0_15px_rgba(0,240,255,0.2)]"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+              <span className="relative z-10 uppercase tracking-widest">{cat}</span>
+            </button>
+          ))}
+        </div>
 
         {/* 3D Carousel Container */}
         <div 
@@ -187,8 +218,9 @@ const Projects = () => {
           </button>
 
           {/* Cards */}
-          {projects.map((project, index) => {
-            const isActive = index === activeIndex;
+          <AnimatePresence mode="popLayout" initial={false}>
+            {filteredProjects.map((project, index) => {
+              const isActive = index === activeIndex;
             
             return (
               <motion.div
@@ -273,19 +305,22 @@ const Projects = () => {
               </motion.div>
             );
           })}
+          </AnimatePresence>
         </div>
 
         {/* Carousel Pagination Dots */}
-        <div className="flex gap-3 mt-12 md:mt-16 relative z-30">
-          {projects.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveIndex(idx)}
-              className={`h-2 rounded-full transition-all duration-500 ease-out ${idx === activeIndex ? 'w-10 bg-neon-blue shadow-[0_0_10px_rgba(0,240,255,0.8)]' : 'w-2 bg-white/20 hover:bg-white/50'}`}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
-          ))}
-        </div>
+        {filteredProjects.length > 1 && (
+          <div className="flex gap-3 mt-12 md:mt-16 relative z-30">
+            {filteredProjects.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveIndex(idx)}
+                className={`h-2 rounded-full transition-all duration-500 ease-out ${idx === activeIndex ? 'w-10 bg-neon-blue shadow-[0_0_10px_rgba(0,240,255,0.8)]' : 'w-2 bg-white/20 hover:bg-white/50'}`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
+        )}
 
       </div>
 
