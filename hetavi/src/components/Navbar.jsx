@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Mail, Download } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '../utils/cn';
@@ -110,12 +110,12 @@ const Navbar = () => {
             <Download size={16} className="text-neon-blue group-hover:scale-110 transition-transform" />
             Resume
           </a>
-          {/* <Link
+          <Link
             to="/contact"
-            className="px-5 py-2 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 hover:border-neon-blue/50 transition-all text-sm font-medium text-white"
+            className="px-5 py-2 rounded-full bg-neon-blue text-dark-bg hover:bg-white hover:text-dark-bg transition-all text-sm font-black uppercase tracking-wider"
           >
             Let's Talk
-          </Link> */}
+          </Link>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -128,49 +128,53 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Nav */}
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="absolute top-full left-0 right-0 bg-dark-bg/95 backdrop-blur-xl border-b border-white/10 p-6 md:hidden flex flex-col gap-4"
-        >
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.to.substring(1);
-              return (
-                <Link
-                  key={link.name}
-                  to={link.to}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="absolute top-full left-0 right-0 bg-dark-bg/95 backdrop-blur-xl border-b border-white/10 p-6 md:hidden flex flex-col gap-4"
+          >
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.to.substring(1);
+                return (
+                  <Link
+                    key={link.name}
+                    to={link.to}
+                    onClick={() => setIsOpen(false)}
+                    className={cn(
+                      "text-lg font-medium transition-colors",
+                      isActive ? "text-neon-blue" : "text-white/80 hover:text-neon-blue"
+                    )}
+                  >
+                    {link.name}
+                  </Link>
+                );
+              })}
+              <div className="flex flex-col gap-3 pt-4 border-t border-white/10">
+                <a
+                  href="https://drive.google.com/uc?export=download&id=1k7x4ptqYJBbyH-kzHOR9ROQ1FkrFbY-1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white font-medium"
                   onClick={() => setIsOpen(false)}
-                  className={cn(
-                    "text-lg font-medium transition-colors",
-                    isActive ? "text-neon-blue" : "text-white/80 hover:text-neon-blue"
-                  )}
                 >
-                  {link.name}
+                  <Download size={18} className="text-neon-blue" />
+                  Download the Resume
+                </a>
+                <Link
+                  to="/contact"
+                  className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-neon-blue text-dark-bg font-bold"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Let's Talk
                 </Link>
-              );
-            })}
-            <div className="flex flex-col gap-3 pt-4 border-t border-white/10">
-              <a
-                href="https://drive.google.com/uc?export=download&id=1k7x4ptqYJBbyH-kzHOR9ROQ1FkrFbY-1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                <Download size={18} className="text-neon-blue" />
-                Download the Resume
-              </a>
-              <Link
-                to="/contact"
-                className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-neon-blue text-dark-bg font-bold"
-                onClick={() => setIsOpen(false)}
-              >
-                Let's Talk
-              </Link>
-            </div>
-        </motion.div>
-      )}
+              </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };

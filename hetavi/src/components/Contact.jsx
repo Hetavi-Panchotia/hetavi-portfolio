@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, MapPin, Send, CheckCircle2, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, MapPin, Send, CheckCircle2, Github, Linkedin, Twitter, AlertCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const ContactInput = ({ label, type = "text", placeholder, name, isTextArea = false }) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -64,16 +63,40 @@ const ContactInput = ({ label, type = "text", placeholder, name, isTextArea = fa
 };
 
 const Contact = () => {
-  const [formState, setFormState] = useState('idle'); // idle, sending, success
+  const formRef = React.useRef();
+  const [formState, setFormState] = useState('idle'); // idle, sending, success, error
+  const [errorMessage, setErrorMessage] = useState('');
+
+  // --- EMAILJS CONFIGURATION ---
+  // Replace these with your own EmailJS credentials
+  const SERVICE_ID = "service_6u2fwcd";
+  const TEMPLATE_ID = "template_2mrp2hq";
+  const PUBLIC_KEY = "K1rzq_jbNeRhB8x1u";
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormState('sending');
-    // Simulate API call
-    setTimeout(() => {
-      setFormState('success');
+    
+    if (SERVICE_ID === "YOUR_SERVICE_ID") {
+      setErrorMessage("Please configure EmailJS credentials in Contact.jsx");
+      setFormState('error');
       setTimeout(() => setFormState('idle'), 5000);
-    }, 2000);
+      return;
+    }
+
+    setFormState('sending');
+
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+      .then((result) => {
+          console.log(result.text);
+          setFormState('success');
+          e.target.reset();
+          setTimeout(() => setFormState('idle'), 5000);
+      }, (error) => {
+          console.log(error.text);
+          setErrorMessage("Failed to send message. Please try again later.");
+          setFormState('error');
+          setTimeout(() => setFormState('idle'), 5000);
+      });
   };
 
   const socialLinks = [
@@ -172,7 +195,7 @@ const Contact = () => {
             <div className="absolute -top-20 -right-20 w-64 h-64 bg-neon-blue filter blur-[100px] opacity-10 animate-pulse" />
             
             <div className="glass p-8 md:p-12 rounded-[2.5rem] border border-white/10 relative overflow-hidden backdrop-blur-2xl shadow-[0_40px_80px_rgba(0,0,0,0.5)]">
-               <form className="space-y-8 relative z-10" onSubmit={handleSubmit}>
+               <form ref={formRef} className="space-y-8 relative z-10" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <ContactInput label="Full Name" name="name" />
                   <ContactInput label="Email Address" type="email" name="email" />
@@ -189,6 +212,8 @@ const Contact = () => {
                   className={`w-full py-5 px-8 rounded-2xl font-black uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-500 overflow-hidden relative group ${
                     formState === 'success' 
                     ? 'bg-green-500/20 text-green-400 border border-green-500/50' 
+                    : formState === 'error'
+                    ? 'bg-red-500/20 text-red-400 border border-red-500/50'
                     : 'bg-white text-dark-bg hover:bg-neon-blue hover:text-dark-bg'
                   }`}
                 >
@@ -229,6 +254,16 @@ const Contact = () => {
                         className="flex items-center gap-2"
                       >
                         Sent Successfully <CheckCircle2 size={20} />
+                      </motion.div>
+                    )}
+                    {formState === 'error' && (
+                      <motion.div 
+                        key="error"
+                        initial={{ scale: 0.5, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        className="flex items-center gap-2"
+                      >
+                        {errorMessage || "Error!"} <AlertCircle size={20} />
                       </motion.div>
                     )}
                   </AnimatePresence>

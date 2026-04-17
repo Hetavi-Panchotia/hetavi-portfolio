@@ -203,7 +203,7 @@ const About = () => {
              </motion.div>
 
             <motion.div 
-              className="relative w-[280px] h-[340px] md:w-[380px] md:h-[460px] lg:w-[400px] lg:h-[500px] group cursor-pointer z-10"
+              className="relative w-full max-w-[280px] h-[340px] md:max-w-[380px] md:h-[460px] lg:max-w-[400px] lg:h-[500px] group cursor-pointer z-10"
               animate={{ y: [-10, 10, -10] }}
               transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
             >

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Award, ExternalLink, ChevronLeft, ChevronRight, X, Maximize2 } from 'lucide-react';
+import useWindowSize from '../hooks/useWindowSize';
 
 
 const certificates = [
@@ -58,6 +59,9 @@ const Certificates = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [selectedCert, setSelectedCert] = useState(null);
+  const { width } = useWindowSize();
+  const isMobile = width < 768;
+  const isSmallMobile = width < 480;
 
   // Auto-rotation logic
   useEffect(() => {
@@ -82,9 +86,8 @@ const Certificates = () => {
     if (diff > Math.floor(total / 2)) diff -= total;
     if (diff < -Math.floor(total / 2)) diff += total;
 
-    // Mobile offsets are smaller so they don't fly off screen
-    const isMobile = window.innerWidth < 768;
-    const offsetMult = isMobile ? 80 : 110;
+    // Dynamic offsets based on screen width
+    const offsetMult = isSmallMobile ? 70 : isMobile ? 85 : 110;
 
     if (diff === 0) {
       return { x: "0%", scale: 1, zIndex: 30, opacity: 1, rotateY: 0, filter: "blur(0px)" };

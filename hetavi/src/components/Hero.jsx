@@ -223,7 +223,7 @@ const Hero = () => {
             </motion.span>
           </motion.div>
 
-          <h1 className="text-5xl md:text-7xl font-heading font-bold leading-tight">
+          <h1 className="text-4xl md:text-7xl font-heading font-bold leading-tight">
             <motion.div variants={letterVariants} className="text-white">Hi, I'm</motion.div>
             <div className="flex flex-wrap text-gradient relative group cursor-default">
               {nameLetters.map((letter, i) => (
@@ -327,7 +327,7 @@ const Hero = () => {
           style={{ perspective: 1000 }} // For 3D Tilt
         >
           <motion.div 
-            className="relative w-72 h-72 md:w-[420px] md:h-[420px] group cursor-pointer"
+            className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-[420px] md:h-[420px] group cursor-pointer"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
